@@ -1,18 +1,20 @@
 import type { FileNode } from "../@types/fileSystem";
 import AboutMe from "../components/AboutMe";
 
+export const aboutTab: FileNode = {
+  name: "about-me.tsx",
+  path: "src/about/about-me.tsx",
+  type: "file",
+  content: () => <AboutMe />,
+};
+
 export const fileSystem: FileNode[] = [
   {
     name: "about",
     path: "src/about",
     type: "folder",
     children: [
-      {
-        name: "about-me.tsx",
-        path: "src/about/about-me.tsx",
-        type: "file",
-        content: () => <AboutMe />,
-      },
+      aboutTab,
       {
         name: "skills.json",
         path: "src/about/skills.json",

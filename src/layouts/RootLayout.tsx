@@ -13,7 +13,7 @@ const RootLayout = () => {
   }, [theme]);
 
   return (
-    <div className="h-screen bg-base overflow-hidden ">
+    <div className="h-screen bg-base overflow-hidden font-vscode-editor">
       <Header />
       <div className="flex h-full w-full">
         <ActivityBar />
@@ -27,15 +27,15 @@ const RootLayout = () => {
               <Panel minSize={200}>
                 <MainContent />
               </Panel>
-              <Separator className="h-0.5 border-t border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
+              {/* <Separator className="h-0.5 border-t border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
               <Panel
-                defaultSize={0}
+                defaultSize={100}
                 collapsible
-                collapsedSize={50}
+                collapsedSize={100}
                 minSize={150}
               >
                 bottom
-              </Panel>
+              </Panel> */}
             </Group>
           </Panel>
           <Separator className="w-.5 border-l border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
