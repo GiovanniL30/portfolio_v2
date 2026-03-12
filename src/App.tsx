@@ -1,17 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
-import { ExplorerPage, GitPage } from "./pages/index";
+import Explorer from "./pages/explorer/Explorer";
+import Git from "./pages/git/Git";
+import { EditorProvider } from "./context/EditorContext";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<ExplorerPage />} />
-          <Route path="git" element={<GitPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <EditorProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<RootLayout />}>
+            <Route index element={<Explorer />} />
+            <Route path="git" element={<Git />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </EditorProvider>
   );
 };
 

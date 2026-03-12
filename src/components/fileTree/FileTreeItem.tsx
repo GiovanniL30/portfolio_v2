@@ -1,0 +1,62 @@
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  FileIcon,
+  FolderIcon,
+} from "lucide-react";
+import { useState } from "react";
+import type { FileNode } from "../../@types/fileSystem";
+import { useEditor } from "../../context/useEditor";
+
+type FileTreeItemProps = {
+  node: FileNode;
+  depth: number;
+};
+
+const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { activeFile, openFile } = useEditor();
+
+  if (node.type === "folder") {
+    return (
+      <div className="mt-.5">
+        <button
+          className="flex items-center w-full gap-1 py-0.5 text-sm text-text-muted hover:bg-text-muted/10 cursor-pointer"
+          onClick={() => setIsOpen(!isOpen)}
+          style={{ paddingLeft: depth * 12 }}
+        >
+          {isOpen ? (
+            <ChevronDownIcon size={16} />
+          ) : (
+            <ChevronRightIcon size={16} />
+          )}
+          <FolderIcon className="-ml-.5" size={16} />
+          <span>{node.name}</span>
+        </button>
+        {isOpen &&
+          node.children?.map((child) => (
+            <FileTreeItem key={child.name} node={child} depth={depth + 1} />
+          ))}
+      </div>
+    );
+  }
+
+  const isActive = activeFile?.name === node.name;
+
+  return (
+    <button
+      className={`flex items-center w-full gap-1 py-0.5 text-sm cursor-pointer mt-0.5 ${
+        isActive
+          ? "bg-text-muted/20 text-text-main"
+          : "text-text-muted hover:bg-text-muted/10"
+      }`}
+      style={{ paddingLeft: depth * 12 }}
+      onClick={() => openFile(node)}
+    >
+      <FileIcon size={14} />
+      <span>{node.name}</span>
+    </button>
+  );
+};
+
+export default FileTreeItem;
