@@ -1,26 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PaddingContainer from "./components/containers/PaddingContainer";
-import SectionContainer from "./components/containers/SectionContainer";
-import RootLayout from "./components/layouts/RootLayout";
+import RootLayout from "./layouts/RootLayout";
+import Explorer from "./pages/explorer/Explorer";
+import Git from "./pages/git/Git";
+import { EditorProvider } from "./context/EditorContext";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route
-            index
-            element={
-              <PaddingContainer>
-                <SectionContainer>
-                  <div className="text-red-500">Hello World</div>
-                </SectionContainer>
-              </PaddingContainer>
-            }
-          />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <EditorProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<RootLayout />}>
+            <Route index element={<Explorer />} />
+            <Route path="git" element={<Git />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </EditorProvider>
   );
 };
 

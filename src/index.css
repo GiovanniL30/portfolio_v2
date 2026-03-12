@@ -1,68 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=DM+Sans:wght@100..1000&display=swap");
 @import "tailwindcss";
-/* 
-
-@custom-variant dark (&:where(.dark, .dark *)); */
 
 @theme {
-  /* --- Backgrounds --- */
-  --color-base: #ffffff; /* Main app background */
-  --color-surface: #f3f4f6; /* Cards, bento boxes, sidebars */
-  --color-surface-hover: #e5e7eb; /* Hover state for cards */
+  --font-sans: "Inter", sans-serif;
+  --font-dm: "DM Sans", sans-serif;
 
-  /* --- Text / Copy --- */
-  --color-text-main: #0a0a0a; /* Headings, main paragraphs */
-  --color-text-muted: #525252; /* Subtitles, secondary text */
-  --color-text-inverse: #ffffff; /* Text on top of Primary buttons */
+  /* Sidebar, Tabs, and Menus */
+  --font-vscode-ui:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 
-  /* --- Brand Colors --- */
-  --color-primary: #3b82f6; /* Main brand color */
-  --color-primary-hover: #2563eb; /* Darker shade for hover states */
+  /*  code area */
+  --font-vscode-editor: Menlo, Monaco, Consolas, "Courier New", monospace;
 
-  --color-secondary: #64748b; /* Neutral/secondary action color */
-  --color-secondary-hover: #475569;
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-surface-hover: var(--bg-surface-hover);
+  --color-landing-bg: var(--bg-landing);
 
-  --color-accent: #8b5cf6; /* Pop of color for your 'chaos' highlights (purple) */
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
 
-  /* --- Borders & Dividers --- */
-  --color-border: #e5e7eb; /* Subtle lines between sections */
-  --color-border-strong: #d1d5db; /* Prominent outlines */
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-secondary: var(--brand-secondary);
+  --color-secondary-hover: var(--brand-secondary-hover);
+  --color-accent: var(--brand-accent);
 
-  /* --- States (Optional but handy for forms/alerts) --- */
+  --color-border: var(--ui-border);
+  --color-border-strong: var(--ui-border-strong);
+
   --color-success: #22c55e;
   --color-warning: #eab308;
   --color-error: #ef4444;
 }
 
-/* 3. DARK MODE (Overrides) */
 @layer base {
-  .dark {
-    /* --- Backgrounds --- */
-    --color-base: #0a0a0a; /* Pitch black or dark charcoal */
-    --color-surface: #171717; /* Slightly lighter for bento boxes */
-    --color-surface-hover: #262626;
+  /* --- Default / Light Theme --- */
+  :root,
+  [data-theme="light"] {
+    --bg-base: #ffffff;
+    --bg-surface: #f3f4f6;
+    --bg-surface-hover: #e5e7eb;
+    --bg-landing: #a3a7a8;
 
-    /* --- Text / Copy --- */
-    --color-text-main: #f9fafb; /* Off-white for readability */
-    --color-text-muted: #a3a3a3;
-    --color-text-inverse: #0a0a0a; /* Dark text on light buttons */
+    --text-main: #0a0a0a;
+    --text-muted: #616161;
+    --text-inverse: #ffffff;
 
-    /* --- Brand Colors --- */
-    --color-primary: #60a5fa;
-    --color-primary-hover: #3b82f6;
+    --brand-primary: #3b82f6;
+    --brand-primary-hover: #2563eb;
+    --brand-secondary: #64748b;
+    --brand-secondary-hover: #475569;
+    --brand-accent: #8b5cf6;
 
-    --color-secondary: #94a3b8;
-    --color-secondary-hover: #64748b;
-
-    --color-accent: #a78bfa;
-
-    /* --- Borders & Dividers --- */
-    --color-border: #262626;
-    --color-border-strong: #404040;
+    --ui-border: #e5e7eb;
+    --ui-border-strong: #d1d5db;
   }
 
+  /* --- Dark Theme --- */
+  [data-theme="dark"] {
+    --bg-base: #0a0a0a;
+    --bg-surface: #171717;
+    --bg-surface-hover: #262626;
+    --bg-landing: #121212; /* Added a dark equivalent for the landing bg */
+
+    --text-main: #f9fafb;
+    --text-muted: #a3a3a3;
+    --text-inverse: #0a0a0a;
+
+    --brand-primary: #60a5fa;
+    --brand-primary-hover: #3b82f6;
+    --brand-secondary: #94a3b8;
+    --brand-secondary-hover: #64748b;
+    --brand-accent: #a78bfa;
+
+    --ui-border: #262626;
+    --ui-border-strong: #404040;
+  }
+
+  [data-theme="dracula"] {
+    --bg-base: #282a36;
+    --bg-surface: #44475a;
+    --bg-surface-hover: #6272a4;
+    --bg-landing: #1e1f29;
+
+    --text-main: #f8f8f2;
+    --text-muted: #8be9fd;
+    --text-inverse: #282a36;
+
+    --brand-primary: #ff79c6;
+    --brand-primary-hover: #ff92d0;
+    --brand-secondary: #50fa7b;
+    --brand-secondary-hover: #69ff94;
+    --brand-accent: #bd93f9;
+
+    --ui-border: #44475a;
+    --ui-border-strong: #6272a4;
+  }
+
+  /* Smooth global transitions for when the user clicks 'change theme' */
   body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
     transition:
       background-color 0.3s ease,
-      color 0.3s ease;
+      color 0.3s ease,
+      border-color 0.3s ease;
   }
+}
+
+/* 3. ANIMATIONS 
+  Left your beautiful scroll animations completely untouched!
+*/
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll linear infinite;
+}
+
+.pause-on-hover:hover .animate-scroll {
+  animation-play-state: paused;
+}
+
+.direction-reverse {
+  animation-direction: reverse;
 }
