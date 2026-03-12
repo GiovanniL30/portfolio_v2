@@ -1,5 +1,6 @@
-import { XIcon, FileIcon, ChevronRightIcon } from "lucide-react";
+import { XIcon, ChevronRightIcon } from "lucide-react";
 import { useEditor } from "../context/useEditor";
+import { getFileIcon } from "../utils/ui.utils";
 
 const MainContent = () => {
   const { openTabs, activeFile, setActiveFile, closeTab } = useEditor();
@@ -18,7 +19,8 @@ const MainContent = () => {
               }`}
               onClick={() => setActiveFile(tab)}
             >
-              <FileIcon size={14} />
+              <img src={getFileIcon(tab.name)} alt="icon" className="w-4 h-4" />
+
               <span className="text-nowrap">{tab.name}</span>
               <button
                 className="ml-1 hover:bg-text-muted/20 rounded p-0.5 cursor-pointer"

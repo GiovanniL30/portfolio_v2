@@ -8,8 +8,8 @@ export const fileSystem: FileNode[] = [
     type: "folder",
     children: [
       {
-        name: "about-me.md",
-        path: "src/about/about-me.md",
+        name: "about-me.tsx",
+        path: "src/about/about-me.tsx",
         type: "file",
         content: () => <AboutMe />,
       },

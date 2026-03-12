@@ -1,12 +1,8 @@
-import {
-  ChevronDownIcon,
-  ChevronRightIcon,
-  FileIcon,
-  FolderIcon,
-} from "lucide-react";
+import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import type { FileNode } from "../../@types/fileSystem";
 import { useEditor } from "../../context/useEditor";
+import { getFileIcon } from "../../utils/ui.utils";
 
 type FileTreeItemProps = {
   node: FileNode;
@@ -30,7 +26,7 @@ const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
           ) : (
             <ChevronRightIcon size={16} />
           )}
-          <FolderIcon className="-ml-.5" size={16} />
+          <img src={getFileIcon("folder")} alt="folder" className="w-4 h-4" />
           <span>{node.name}</span>
         </button>
         {isOpen &&
@@ -53,7 +49,8 @@ const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
       style={{ paddingLeft: depth * 12 }}
       onClick={() => openFile(node)}
     >
-      <FileIcon size={14} />
+      <img src={getFileIcon(node.name)} alt="icon" className="w-4 h-4" />
+
       <span>{node.name}</span>
     </button>
   );
