@@ -1,0 +1,68 @@
+@import "tailwindcss";
+/* 
+
+@custom-variant dark (&:where(.dark, .dark *)); */
+
+@theme {
+  /* --- Backgrounds --- */
+  --color-base: #ffffff; /* Main app background */
+  --color-surface: #f3f4f6; /* Cards, bento boxes, sidebars */
+  --color-surface-hover: #e5e7eb; /* Hover state for cards */
+
+  /* --- Text / Copy --- */
+  --color-text-main: #0a0a0a; /* Headings, main paragraphs */
+  --color-text-muted: #525252; /* Subtitles, secondary text */
+  --color-text-inverse: #ffffff; /* Text on top of Primary buttons */
+
+  /* --- Brand Colors --- */
+  --color-primary: #3b82f6; /* Main brand color */
+  --color-primary-hover: #2563eb; /* Darker shade for hover states */
+
+  --color-secondary: #64748b; /* Neutral/secondary action color */
+  --color-secondary-hover: #475569;
+
+  --color-accent: #8b5cf6; /* Pop of color for your 'chaos' highlights (purple) */
+
+  /* --- Borders & Dividers --- */
+  --color-border: #e5e7eb; /* Subtle lines between sections */
+  --color-border-strong: #d1d5db; /* Prominent outlines */
+
+  /* --- States (Optional but handy for forms/alerts) --- */
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+  --color-error: #ef4444;
+}
+
+/* 3. DARK MODE (Overrides) */
+@layer base {
+  .dark {
+    /* --- Backgrounds --- */
+    --color-base: #0a0a0a; /* Pitch black or dark charcoal */
+    --color-surface: #171717; /* Slightly lighter for bento boxes */
+    --color-surface-hover: #262626;
+
+    /* --- Text / Copy --- */
+    --color-text-main: #f9fafb; /* Off-white for readability */
+    --color-text-muted: #a3a3a3;
+    --color-text-inverse: #0a0a0a; /* Dark text on light buttons */
+
+    /* --- Brand Colors --- */
+    --color-primary: #60a5fa;
+    --color-primary-hover: #3b82f6;
+
+    --color-secondary: #94a3b8;
+    --color-secondary-hover: #64748b;
+
+    --color-accent: #a78bfa;
+
+    /* --- Borders & Dividers --- */
+    --color-border: #262626;
+    --color-border-strong: #404040;
+  }
+
+  body {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+}
