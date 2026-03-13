@@ -7,3 +7,14 @@ export type FileNode = {
   children?: FileNode[];
   content?: () => ReactNode;
 };
+
+export type Project = {
+  title: string;
+  description: string;
+  info: {
+    year: string;
+    liveUrl?: string;
+    githubUrl?: string;
+  };
+  badge: string[];
+};

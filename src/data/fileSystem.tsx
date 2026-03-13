@@ -1,7 +1,7 @@
 import type { FileNode } from "../@types/fileSystem";
-import About from "../components/tabs/About";
+import About from "../components/tabs/about/About";
 import Home from "../components/tabs/Home";
-import Projects from "../components/tabs/Projects";
+import Projects from "../components/tabs/projects/Projects";
 
 export const homeTab: FileNode = {
   name: "home.tsx",

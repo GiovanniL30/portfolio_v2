@@ -27,7 +27,7 @@ const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
             <ChevronRightIcon size={16} />
           )}
           <img src={getFileIcon("folder")} alt="folder" className="w-4 h-4" />
-          <span>{node.name}</span>
+          <span className="text-nowrap">{node.name}</span>
         </button>
         {isOpen &&
           node.children?.map((child) => (
@@ -51,7 +51,7 @@ const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
     >
       <img src={getFileIcon(node.name)} alt="icon" className="w-4 h-4" />
 
-      <span>{node.name}</span>
+      <span className="text-nowrap">{node.name}</span>
     </button>
   );
 };

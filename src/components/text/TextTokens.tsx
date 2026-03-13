@@ -21,7 +21,10 @@ export const TextToken = ({
   children,
   className = "",
 }: TextTokenProps) => (
-  <span className={`text-token-${variant} ${className}`.trim()}>
+  <span
+    style={{ color: `var(--color-token-${variant})` }}
+    className={`${className}`.trim()}
+  >
     {children}
   </span>
 );

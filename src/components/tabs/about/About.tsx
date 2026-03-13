@@ -1,14 +1,14 @@
 import { ArrowRightIcon, GithubIcon, MailIcon } from "lucide-react";
-import me from "../../assets/images/me.jpg";
-import Button from "../ui/Button";
+import me from "../../../assets/images/me.jpg";
+import Button from "../../ui/Button";
 import type { ReactNode } from "react";
-import Skills from "./aboutSections/Skills";
-import Interests from "./aboutSections/Interests";
-import Me from "./aboutSections/Me";
-import Experience from "./aboutSections/Experience";
-import Certifications from "./aboutSections/Certifications";
-import { useEditor } from "../../context/useEditor";
-import { projectsTab } from "../../data/fileSystem";
+import Skills from "./Skills";
+import Interests from "./Interests";
+import Me from "./Me";
+import Experience from "./Experience";
+import Certifications from "./Certifications";
+import { useEditor } from "../../../context/useEditor";
+import { projectsTab } from "../../../data/fileSystem";
 
 type section =
   | "About Me"
