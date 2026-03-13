@@ -1,11 +1,27 @@
 import type { FileNode } from "../@types/fileSystem";
-import AboutMe from "../components/AboutMe";
+import About from "../components/tabs/About";
+import Home from "../components/tabs/Home";
+import Projects from "../components/tabs/Projects";
+
+export const homeTab: FileNode = {
+  name: "home.tsx",
+  path: "src/home.tsx",
+  type: "file",
+  content: () => <Home />,
+};
 
 export const aboutTab: FileNode = {
   name: "about-me.tsx",
   path: "src/about/about-me.tsx",
   type: "file",
-  content: () => <AboutMe />,
+  content: () => <About />,
+};
+
+export const projectsTab: FileNode = {
+  name: "all-projects.tsx",
+  path: "src/project/all-projects.tsx",
+  type: "file",
+  content: () => <Projects />,
 };
 
 export const fileSystem: FileNode[] = [
@@ -13,21 +29,14 @@ export const fileSystem: FileNode[] = [
     name: "about",
     path: "src/about",
     type: "folder",
-    children: [
-      aboutTab,
-      {
-        name: "skills.json",
-        path: "src/about/skills.json",
-        type: "file",
-        content: () => <div>TypeScript, React, Node.js, Tailwind CSS, Git</div>,
-      },
-    ],
+    children: [aboutTab],
   },
   {
     name: "projects",
     path: "src/projects",
     type: "folder",
     children: [
+      projectsTab,
       {
         name: "project-1.tsx",
         path: "src/projects/project-1.tsx",
@@ -48,6 +57,7 @@ export const fileSystem: FileNode[] = [
       },
     ],
   },
+  homeTab,
   {
     name: "contact.md",
     path: "src/contact.md",

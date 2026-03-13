@@ -13,18 +13,18 @@ const RootLayout = () => {
   }, [theme]);
 
   return (
-    <div className="h-screen bg-base overflow-hidden font-vscode-editor">
+    <div className="flex flex-col h-screen bg-base font-vscode-editor">
       <Header />
-      <div className="flex h-full w-full">
+      <div className="flex flex-1 min-h-0 w-full">
         <ActivityBar />
         <Group orientation="horizontal">
           <Panel collapsible collapsedSize={0} minSize={150} defaultSize={250}>
             <Outlet />
           </Panel>
           <Separator className="w-.5 border-l border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
-          <Panel minSize={200}>
+          <Panel minSize={200} className="flex-1 min-h-0 overflow-y-hidden">
             <Group orientation="vertical">
-              <Panel minSize={200}>
+              <Panel minSize={200} className="flex-1 min-h-0">
                 <MainContent />
               </Panel>
               {/* <Separator className="h-0.5 border-t border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />

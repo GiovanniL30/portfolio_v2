@@ -31,6 +31,16 @@
   --color-success: #22c55e;
   --color-warning: #eab308;
   --color-error: #ef4444;
+
+  /* Code Syntax Token Colors (theme-mapped) */
+  --color-token-keyword: var(--vsc-token-keyword);
+  --color-token-string: var(--vsc-token-string);
+  --color-token-comment: var(--vsc-token-comment);
+  --color-token-function: var(--vsc-token-function);
+  --color-token-variable: var(--vsc-token-variable);
+  --color-token-number: var(--vsc-token-number);
+  --color-token-type: var(--vsc-token-type);
+  --color-token-operator: var(--vsc-token-operator);
 }
 
 @layer base {
@@ -54,6 +64,16 @@
 
     --ui-border: #e5e7eb;
     --ui-border-strong: #d1d5db;
+
+    /* VS Code Syntax Token Colors - Light */
+    --vsc-token-keyword: #0000ff;
+    --vsc-token-string: #a31515;
+    --vsc-token-comment: #008000;
+    --vsc-token-function: #795e26;
+    --vsc-token-variable: #001080;
+    --vsc-token-number: #098658;
+    --vsc-token-type: #267f99;
+    --vsc-token-operator: #000000;
   }
 
   /* --- Dark Theme --- */
@@ -75,6 +95,16 @@
 
     --ui-border: #262626;
     --ui-border-strong: #404040;
+
+    /* VS Code Syntax Token Colors - Dark */
+    --vsc-token-keyword: #569cd6;
+    --vsc-token-string: #ce9178;
+    --vsc-token-comment: #6a9955;
+    --vsc-token-function: #dcdcaa;
+    --vsc-token-variable: #9cdcfe;
+    --vsc-token-number: #b5cea8;
+    --vsc-token-type: #4ec9b0;
+    --vsc-token-operator: #d4d4d4;
   }
 
   [data-theme="dracula"] {
@@ -95,6 +125,16 @@
 
     --ui-border: #44475a;
     --ui-border-strong: #6272a4;
+
+    /* VS Code Syntax Token Colors - Dracula */
+    --vsc-token-keyword: #ff79c6;
+    --vsc-token-string: #f1fa8c;
+    --vsc-token-comment: #6272a4;
+    --vsc-token-function: #50fa7b;
+    --vsc-token-variable: #8be9fd;
+    --vsc-token-number: #bd93f9;
+    --vsc-token-type: #8be9fd;
+    --vsc-token-operator: #ffb86c;
   }
 
   /* Smooth global transitions for when the user clicks 'change theme' */

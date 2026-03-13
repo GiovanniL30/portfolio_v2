@@ -5,11 +5,15 @@ import {
   LinkedinIcon,
   SlashIcon,
 } from "lucide-react";
-import Button from "./ui/Button";
+import Button from "../ui/Button";
+import { useEditor } from "../../context/useEditor";
+import { aboutTab } from "../../data/fileSystem";
 
-const AboutMe = () => {
+const Home = () => {
+  const { setOpenTab } = useEditor();
+
   return (
-    <div className="h-full flex w-full justify-center items-center -mt-10">
+    <div className="h-full flex w-full justify-center items-center mt-20">
       <div className="flex flex-col items-center gap-10">
         <CodeIcon
           className="text-primary drop-shadow-[0_0_12px_var(--brand-primary)]"
@@ -32,7 +36,9 @@ const AboutMe = () => {
             <p>View Projects</p>
             <ArrowRightIcon size={18} />
           </Button>
-          <Button variant="outline">Learn More</Button>
+          <Button variant="outline" onClick={() => setOpenTab(aboutTab)}>
+            Learn More
+          </Button>
         </div>
         <div className="flex items-center gap-5">
           <Button
@@ -56,14 +62,4 @@ const AboutMe = () => {
   );
 };
 
-export default AboutMe;
-// Nitin Ranganath
-// Full Stack Developer
-
-// I craft clean, performant web applications with modern technologies. Specialized in TypeScript, React, Node.js, and building products that users love.
-
-// View Projects
-// Learn More
-// GitHub
-// /
-// Contact
+export default Home;

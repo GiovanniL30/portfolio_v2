@@ -6,7 +6,7 @@ const MainContent = () => {
   const { openTabs, activeFile, setActiveFile, closeTab } = useEditor();
 
   return (
-    <div className="flex flex-col h-full bg-surface/60 font-vscode-editor">
+    <div className="flex flex-col flex-1 min-h-screen bg-surface/60 font-vscode-editor">
       {openTabs.length > 0 && (
         <div className="flex border-b border-text-muted/20 bg-surface/30 overflow-x-auto">
           {openTabs.map((tab) => (
@@ -20,7 +20,6 @@ const MainContent = () => {
               onClick={() => setActiveFile(tab)}
             >
               <img src={getFileIcon(tab.name)} alt="icon" className="w-4 h-4" />
-
               <span className="text-nowrap">{tab.name}</span>
               <button
                 className="ml-1 hover:bg-text-muted/20 rounded p-0.5 cursor-pointer"
@@ -35,26 +34,33 @@ const MainContent = () => {
           ))}
         </div>
       )}
-      <div className="flex-1 overflow-y-auto p-4">
-        {activeFile?.path && (
-          <div className="sticky top-0 flex items-center gap-1 text-xs text-text-muted mb-3 z-10">
-            {activeFile.path.split("/").map((segment, i, arr) => (
-              <span key={i} className="flex items-center gap-1">
-                {i > 0 && <ChevronRightIcon size={12} />}
-                <span className={i === arr.length - 1 ? "text-text-main" : ""}>
-                  {segment}
+
+      <div className="flex-1 min-h-0 flex flex-col">
+        <div className="p-4">
+          {activeFile?.path && (
+            <div className="flex items-center gap-1 text-xs text-text-muted mb-3 z-10">
+              {activeFile.path.split("/").map((segment, i, arr) => (
+                <span key={i} className="flex items-center gap-1">
+                  {i > 0 && <ChevronRightIcon size={12} />}
+                  <span
+                    className={i === arr.length - 1 ? "text-text-main" : ""}
+                  >
+                    {segment}
+                  </span>
                 </span>
-              </span>
-            ))}
+              ))}
+            </div>
+          )}
+          <div className="flex-1 h-full overflow-y-auto">
+            {activeFile?.content ? (
+              activeFile.content()
+            ) : (
+              <div className="flex items-center justify-center flex-1 text-text-muted text-sm">
+                Open a file from the explorer
+              </div>
+            )}
           </div>
-        )}
-        {activeFile?.content ? (
-          <div className="overflow-y-auto h-full 0">{activeFile.content()}</div>
-        ) : (
-          <div className="flex items-center justify-center h-full text-text-muted text-sm">
-            Open a file from the explorer
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
