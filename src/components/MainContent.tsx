@@ -1,9 +1,12 @@
-import { XIcon, ChevronRightIcon } from "lucide-react";
+import { XIcon, ChevronRightIcon, CodeIcon } from "lucide-react";
 import { useEditor } from "../context/useEditor";
 import { getFileIcon } from "../utils/ui.utils";
+import Button from "./ui/Button";
+import { aboutTab, homeTab, projectsTab } from "../data/fileSystem";
 
 const MainContent = () => {
-  const { openTabs, activeFile, setActiveFile, closeTab } = useEditor();
+  const { openTabs, activeFile, setActiveFile, closeTab, setOpenTab } =
+    useEditor();
 
   return (
     <div className="flex flex-col flex-1 min-h-screen bg-surface/60 font-vscode-editor">
@@ -36,7 +39,7 @@ const MainContent = () => {
       )}
 
       <div className="flex-1 min-h-0 flex flex-col">
-        <div className="p-4">
+        <div className="p-4 h-full">
           {activeFile?.path && (
             <div className="flex items-center gap-1 text-xs text-text-muted mb-3 z-10">
               {activeFile.path.split("/").map((segment, i, arr) => (
@@ -55,8 +58,37 @@ const MainContent = () => {
             {activeFile?.content ? (
               activeFile.content()
             ) : (
-              <div className="flex items-center justify-center flex-1 text-text-muted text-sm">
-                Open a file from the explorer
+              <div className="flex items-center h-screen justify-center flex-1 text-text-muted text-sm flex-col">
+                <div className="flex flex-col items-center gap-2">
+                  <CodeIcon size={100} />
+                  <p className="text-center">Open a file from the explorer</p>
+                </div>
+                <div className="flex items-start gap-5 mt-10">
+                  <p className="text-xs">Quick Actions:</p>
+                  <div className="text-xs flex flex-col gap-5">
+                    <Button
+                      onClick={() => setOpenTab(homeTab)}
+                      className="p-2!"
+                      variant="outline"
+                    >
+                      Home
+                    </Button>
+                    <Button
+                      onClick={() => setOpenTab(aboutTab)}
+                      className="p-2!"
+                      variant="outline"
+                    >
+                      About Me
+                    </Button>
+                    <Button
+                      onClick={() => setOpenTab(projectsTab)}
+                      className="p-2!"
+                      variant="outline"
+                    >
+                      Projects
+                    </Button>
+                  </div>
+                </div>
               </div>
             )}
           </div>

@@ -13,7 +13,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   const baseStyle =
-    "px-7 py-2.5 rounded-md cursor-pointer transition-all duration-300 ease-linear font-medium tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
+    "text-text-main px-7 py-2.5 rounded-md cursor-pointer transition-all duration-300 ease-linear font-medium tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
 
   const buttonStyle = (variant: Variants) => {
     switch (variant) {
