@@ -1,5 +1,7 @@
 import type { Project } from "../@types/fileSystem";
 
+export const personalGithubLink = "https://github.com/GiovanniL30";
+
 export const skills = {
   frontend: [
     "React",
