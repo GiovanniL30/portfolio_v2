@@ -1,16 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=DM+Sans:wght@100..1000&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-dm: "DM Sans", sans-serif;
-
-  /* Sidebar, Tabs, and Menus */
   --font-vscode-ui:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
-
-  /*  code area */
   --font-vscode-editor: Menlo, Monaco, Consolas, "Courier New", monospace;
 
   --color-base: var(--bg-base);
@@ -34,12 +27,20 @@
   --color-success: #22c55e;
   --color-warning: #eab308;
   --color-error: #ef4444;
+
+  /* Code Syntax Token Colors (theme-mapped) */
+  --color-token-keyword: var(--vsc-token-keyword);
+  --color-token-string: var(--vsc-token-string);
+  --color-token-comment: var(--vsc-token-comment);
+  --color-token-function: var(--vsc-token-function);
+  --color-token-variable: var(--vsc-token-variable);
+  --color-token-number: var(--vsc-token-number);
+  --color-token-type: var(--vsc-token-type);
+  --color-token-operator: var(--vsc-token-operator);
 }
 
 @layer base {
-  /* --- Default / Light Theme --- */
-  :root,
-  [data-theme="light"] {
+  :root [data-theme="light"] {
     --bg-base: #ffffff;
     --bg-surface: #f3f4f6;
     --bg-surface-hover: #e5e7eb;
@@ -57,6 +58,16 @@
 
     --ui-border: #e5e7eb;
     --ui-border-strong: #d1d5db;
+
+    /* VS Code Syntax Token Colors - Light */
+    --vsc-token-keyword: #0000ff;
+    --vsc-token-string: #a31515;
+    --vsc-token-comment: #008000;
+    --vsc-token-function: #795e26;
+    --vsc-token-variable: #001080;
+    --vsc-token-number: #098658;
+    --vsc-token-type: #267f99;
+    --vsc-token-operator: #000000;
   }
 
   /* --- Dark Theme --- */
@@ -78,6 +89,16 @@
 
     --ui-border: #262626;
     --ui-border-strong: #404040;
+
+    /* VS Code Syntax Token Colors - Dark */
+    --vsc-token-keyword: #569cd6;
+    --vsc-token-string: #ce9178;
+    --vsc-token-comment: #6a9955;
+    --vsc-token-function: #dcdcaa;
+    --vsc-token-variable: #9cdcfe;
+    --vsc-token-number: #b5cea8;
+    --vsc-token-type: #4ec9b0;
+    --vsc-token-operator: #d4d4d4;
   }
 
   [data-theme="dracula"] {
@@ -98,10 +119,231 @@
 
     --ui-border: #44475a;
     --ui-border-strong: #6272a4;
+
+    /* VS Code Syntax Token Colors - Dracula */
+    --vsc-token-keyword: #ff79c6;
+    --vsc-token-string: #f1fa8c;
+    --vsc-token-comment: #6272a4;
+    --vsc-token-function: #50fa7b;
+    --vsc-token-variable: #8be9fd;
+    --vsc-token-number: #bd93f9;
+    --vsc-token-type: #8be9fd;
+    --vsc-token-operator: #ffb86c;
+  }
+
+  /* --- Light (Blue) Theme --- */
+  [data-theme="light-blue"] {
+    --bg-base: #ffffff;
+    --bg-surface: #f3f4f6;
+    --bg-surface-hover: #e5e7eb;
+    --bg-landing: #a3a7a8;
+    --text-main: #0a0a0a;
+    --text-muted: #616161;
+    --text-inverse: #ffffff;
+    --brand-primary: #3b82f6;
+    --brand-primary-hover: #2563eb;
+    --brand-secondary: #64748b;
+    --brand-secondary-hover: #475569;
+    --brand-accent: #8b5cf6;
+    --ui-border: #e5e7eb;
+    --ui-border-strong: #d1d5db;
+    --vsc-token-keyword: #0000ff;
+    --vsc-token-string: #a31515;
+    --vsc-token-comment: #008000;
+    --vsc-token-function: #795e26;
+    --vsc-token-variable: #001080;
+    --vsc-token-number: #098658;
+    --vsc-token-type: #267f99;
+    --vsc-token-operator: #000000;
+  }
+
+  /* --- Dark (Orange) Theme --- */
+  [data-theme="dark-orange"] {
+    --bg-base: #18120a;
+    --bg-surface: #23201b;
+    --bg-surface-hover: #2d261a;
+    --bg-landing: #1a1207;
+    --text-main: #f9fafb;
+    --text-muted: #fbbf24;
+    --text-inverse: #18120a;
+    --brand-primary: #ff9800;
+    --brand-primary-hover: #fb8c00;
+    --brand-secondary: #ffb74d;
+    --brand-secondary-hover: #ffa726;
+    --brand-accent: #ff7043;
+    --ui-border: #2d261a;
+    --ui-border-strong: #3e2c18;
+    --vsc-token-keyword: #ff9800;
+    --vsc-token-string: #ffd180;
+    --vsc-token-comment: #ffb74d;
+    --vsc-token-function: #ff7043;
+    --vsc-token-variable: #ffe0b2;
+    --vsc-token-number: #ffcc80;
+    --vsc-token-type: #ffb300;
+    --vsc-token-operator: #ffb300;
+  }
+
+  /* --- Solarized Light (Teal) Theme --- */
+  [data-theme="solarized-light"] {
+    --bg-base: #fdf6e3;
+    --bg-surface: #f5ecd7;
+    --bg-surface-hover: #eee8d5;
+    --bg-landing: #e1dbcd;
+    --text-main: #657b83;
+    --text-muted: #93a1a1;
+    --text-inverse: #fdf6e3;
+    --brand-primary: #2aa198;
+    --brand-primary-hover: #268986;
+    --brand-secondary: #b58900;
+    --brand-secondary-hover: #a07d00;
+    --brand-accent: #6c71c4;
+    --ui-border: #eee8d5;
+    --ui-border-strong: #e1dbcd;
+    --vsc-token-keyword: #859900;
+    --vsc-token-string: #2aa198;
+    --vsc-token-comment: #93a1a1;
+    --vsc-token-function: #268bd2;
+    --vsc-token-variable: #b58900;
+    --vsc-token-number: #d33682;
+    --vsc-token-type: #6c71c4;
+    --vsc-token-operator: #cb4b16;
+  }
+
+  /* --- Solarized Dark (Yellow) Theme --- */
+  [data-theme="solarized-dark"] {
+    --bg-base: #002b36;
+    --bg-surface: #073642;
+    --bg-surface-hover: #586e75;
+    --bg-landing: #001f27;
+    --text-main: #fdf6e3;
+    --text-muted: #b58900;
+    --text-inverse: #002b36;
+    --brand-primary: #b58900;
+    --brand-primary-hover: #e1b700;
+    --brand-secondary: #2aa198;
+    --brand-secondary-hover: #268986;
+    --brand-accent: #cb4b16;
+    --ui-border: #073642;
+    --ui-border-strong: #586e75;
+    --vsc-token-keyword: #b58900;
+    --vsc-token-string: #2aa198;
+    --vsc-token-comment: #586e75;
+    --vsc-token-function: #268bd2;
+    --vsc-token-variable: #859900;
+    --vsc-token-number: #d33682;
+    --vsc-token-type: #6c71c4;
+    --vsc-token-operator: #cb4b16;
+  }
+
+  /* --- Nord (Cyan) Theme --- */
+  [data-theme="nord-cyan"] {
+    --bg-base: #2e3440;
+    --bg-surface: #3b4252;
+    --bg-surface-hover: #434c5e;
+    --bg-landing: #242933;
+    --text-main: #eceff4;
+    --text-muted: #8fbcbb;
+    --text-inverse: #2e3440;
+    --brand-primary: #88c0d0;
+    --brand-primary-hover: #81a1c1;
+    --brand-secondary: #5e81ac;
+    --brand-secondary-hover: #4c566a;
+    --brand-accent: #8fbcbb;
+    --ui-border: #434c5e;
+    --ui-border-strong: #4c566a;
+    --vsc-token-keyword: #81a1c1;
+    --vsc-token-string: #a3be8c;
+    --vsc-token-comment: #616e88;
+    --vsc-token-function: #8fbcbb;
+    --vsc-token-variable: #88c0d0;
+    --vsc-token-number: #b48ead;
+    --vsc-token-type: #5e81ac;
+    --vsc-token-operator: #d8dee9;
+  }
+
+  /* --- Monokai (Pink) Theme --- */
+  [data-theme="monokai-pink"] {
+    --bg-base: #272822;
+    --bg-surface: #383830;
+    --bg-surface-hover: #49483e;
+    --bg-landing: #1a1a16;
+    --text-main: #f8f8f2;
+    --text-muted: #f92672;
+    --text-inverse: #272822;
+    --brand-primary: #f92672;
+    --brand-primary-hover: #fd5ff0;
+    --brand-secondary: #a6e22e;
+    --brand-secondary-hover: #66d9ef;
+    --brand-accent: #fd971f;
+    --ui-border: #49483e;
+    --ui-border-strong: #75715e;
+    --vsc-token-keyword: #f92672;
+    --vsc-token-string: #e6db74;
+    --vsc-token-comment: #75715e;
+    --vsc-token-function: #a6e22e;
+    --vsc-token-variable: #fd971f;
+    --vsc-token-number: #ae81ff;
+    --vsc-token-type: #66d9ef;
+    --vsc-token-operator: #f8f8f2;
+  }
+
+  /* --- Gruvbox Light (Brown) Theme --- */
+  [data-theme="gruvbox-light"] {
+    --bg-base: #fbf1c7;
+    --bg-surface: #f9eab3;
+    --bg-surface-hover: #f2e5bc;
+    --bg-landing: #e9ddb7;
+    --text-main: #3c3836;
+    --text-muted: #b57614;
+    --text-inverse: #fbf1c7;
+    --brand-primary: #b57614;
+    --brand-primary-hover: #d79921;
+    --brand-secondary: #8ec07c;
+    --brand-secondary-hover: #b8bb26;
+    --brand-accent: #fabd2f;
+    --ui-border: #f2e5bc;
+    --ui-border-strong: #e9ddb7;
+    --vsc-token-keyword: #b57614;
+    --vsc-token-string: #b8bb26;
+    --vsc-token-comment: #928374;
+    --vsc-token-function: #8ec07c;
+    --vsc-token-variable: #d3869b;
+    --vsc-token-number: #d79921;
+    --vsc-token-type: #458588;
+    --vsc-token-operator: #3c3836;
+  }
+
+  /* --- Gruvbox Dark (Green) Theme --- */
+  [data-theme="gruvbox-dark"] {
+    --bg-base: #282828;
+    --bg-surface: #3c3836;
+    --bg-surface-hover: #504945;
+    --bg-landing: #1d2021;
+    --text-main: #ebdbb2;
+    --text-muted: #b8bb26;
+    --text-inverse: #282828;
+    --brand-primary: #b8bb26;
+    --brand-primary-hover: #a9b665;
+    --brand-secondary: #8ec07c;
+    --brand-secondary-hover: #b8bb26;
+    --brand-accent: #fabd2f;
+    --ui-border: #504945;
+    --ui-border-strong: #665c54;
+    --vsc-token-keyword: #b8bb26;
+    --vsc-token-string: #b8bb26;
+    --vsc-token-comment: #928374;
+    --vsc-token-function: #8ec07c;
+    --vsc-token-variable: #d3869b;
+    --vsc-token-number: #d79921;
+    --vsc-token-type: #458588;
+    --vsc-token-operator: #ebdbb2;
   }
 
   /* Smooth global transitions for when the user clicks 'change theme' */
+  /* Smooth global transitions for when the user clicks 'change theme' */
   body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
     background-color: var(--bg-base);
     color: var(--text-main);
     transition:
@@ -111,26 +353,44 @@
   }
 }
 
-/* 3. ANIMATIONS 
-  Left your beautiful scroll animations completely untouched!
-*/
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+input::placeholder {
+  color: var(--text-main);
 }
 
-.animate-scroll {
-  animation: scroll linear infinite;
+/* VS Code-style scrollbar */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--bg-surface-hover) transparent;
 }
 
-.pause-on-hover:hover .animate-scroll {
-  animation-play-state: paused;
+*::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
 }
 
-.direction-reverse {
-  animation-direction: reverse;
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-hover);
+  border-radius: 0;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.gradient-divider {
+  background: linear-gradient(
+    90deg,
+    var(--brand-primary-hover) 0%,
+    var(--brand-primary) 50%,
+    var(--brand-primary-hover) 100%
+  );
+  box-shadow: 0 0 12px 0 var(--brand-primary-hover);
 }

@@ -1,45 +1,46 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ActivityBar from "../components/ActivityBar";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import MainContent from "../components/MainContent";
 import { Group, Panel, Separator } from "react-resizable-panels";
 import { Outlet } from "react-router-dom";
 
 const RootLayout = () => {
-  const [theme] = useState("dark");
-
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
+    const savedTheme = localStorage.getItem("theme");
+    const themeToApply = savedTheme ? JSON.parse(savedTheme) : "dark";
+
+    document.documentElement.setAttribute("data-theme", themeToApply);
+  }, []);
 
   return (
-    <div className="h-screen bg-base overflow-hidden ">
+    <div className="flex flex-col h-screen bg-base font-vscode-editor">
       <Header />
-      <div className="flex h-full w-full">
+      <div className="flex flex-1 min-h-0 w-full">
         <ActivityBar />
         <Group orientation="horizontal">
           <Panel collapsible collapsedSize={0} minSize={150} defaultSize={250}>
             <Outlet />
           </Panel>
           <Separator className="w-.5 border-l border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
-          <Panel minSize={200}>
+          <Panel minSize={200} className="flex-1 min-h-0 overflow-y-hidden">
             <Group orientation="vertical">
-              <Panel minSize={200}>
+              <Panel minSize={200} className="flex-1 min-h-0">
                 <MainContent />
               </Panel>
-              <Separator className="h-0.5 border-t border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
+              {/* <Separator className="h-0.5 border-t border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
               <Panel
-                defaultSize={0}
+                defaultSize={100}
                 collapsible
-                collapsedSize={50}
+                collapsedSize={100}
                 minSize={150}
               >
                 bottom
-              </Panel>
+              </Panel> */}
             </Group>
           </Panel>
           <Separator className="w-.5 border-l border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
-          <Panel defaultSize={2} collapsible collapsedSize={2}>
+          <Panel defaultSize={2} collapsible minSize={200} collapsedSize={10}>
             right
           </Panel>
         </Group>
