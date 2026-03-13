@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import Themes from "./Themes";
 
 type Action = "Themes";
 
@@ -7,7 +8,7 @@ const actionsList: Action[] = ["Themes"];
 const renderContent = (content: Action) => {
   switch (content) {
     case "Themes":
-      return <h1>Them</h1>;
+      return <Themes />;
   }
 };
 
