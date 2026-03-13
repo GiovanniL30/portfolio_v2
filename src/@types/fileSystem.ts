@@ -17,4 +17,5 @@ export type Project = {
     githubUrl?: string;
   };
   badge: string[];
+  images?: string[];
 };

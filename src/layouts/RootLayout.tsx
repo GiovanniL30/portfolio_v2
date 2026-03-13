@@ -8,7 +8,15 @@ import { Outlet } from "react-router-dom";
 const RootLayout = () => {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    const themeToApply = savedTheme ? JSON.parse(savedTheme) : "dark";
+
+    let themeToApply = "dark";
+    if (savedTheme) {
+      try {
+        themeToApply = JSON.parse(savedTheme);
+      } catch {
+        themeToApply = savedTheme;
+      }
+    }
 
     document.documentElement.setAttribute("data-theme", themeToApply);
   }, []);

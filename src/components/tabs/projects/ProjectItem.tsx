@@ -1,9 +1,4 @@
-import {
-  CalendarIcon,
-  GithubIcon,
-  GlobeIcon,
-  ArrowRightIcon,
-} from "lucide-react";
+import { CalendarIcon, GithubIcon, GlobeIcon, ArrowRightIcon } from "lucide-react";
 import type { Project } from "../../../@types/fileSystem";
 import ScrollableContainer from "../../containers/ScrollableContainer";
 import Badge from "../../ui/Badge";
@@ -33,10 +28,15 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
             <CalendarIcon size={16} />
             <p>{project.info.year}</p>
           </div>
+
+          {project?.images && project.images.length === 1 && (
+            <div className="mb-2">
+              <img className="w-full h-56 object-cover rounded-md" src={project.images[0]} alt="project-0" />
+            </div>
+          )}
+
           <ScrollableContainer scrollable={false}>
-            <p className="text-sm text-text-muted text-justify p-2">
-              {project.description}
-            </p>
+            <p className="text-sm text-text-muted text-justify p-2">{project.description}</p>
           </ScrollableContainer>
           <div className="flex items-center gap-2">
             {project.info?.githubUrl && (
@@ -50,10 +50,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
                 <GithubIcon size={18} />
                 <span className="text-xs font-medium">GitHub</span>
                 <span className="inline-block w-0 group-hover/link:w-5 transition-all duration-200 overflow-hidden">
-                  <ArrowRightIcon
-                    size={16}
-                    className="ml-1 opacity-0 group-hover/link:opacity-100 scale-x-100 transition-all duration-200"
-                  />
+                  <ArrowRightIcon size={16} className="ml-1 opacity-0 group-hover/link:opacity-100 scale-x-100 transition-all duration-200" />
                 </span>
               </a>
             )}
@@ -68,10 +65,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
                 <GlobeIcon size={18} />
                 <span className="text-xs font-medium">Live URL</span>
                 <span className="inline-block w-0 group-hover/link:w-5 transition-all duration-200 overflow-hidden">
-                  <ArrowRightIcon
-                    size={16}
-                    className="ml-1 opacity-0 group-hover/link:opacity-100 scale-x-100 transition-all duration-200"
-                  />
+                  <ArrowRightIcon size={16} className="ml-1 opacity-0 group-hover/link:opacity-100 scale-x-100 transition-all duration-200" />
                 </span>
               </a>
             )}

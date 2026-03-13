@@ -10,8 +10,7 @@ const ExtraProjects = () => {
         <p className="text-xl font-semibold">Other Projects</p>
 
         <p className="text-text-muted text-sm my-5 mb-7">
-          Additional projects and experiments that highlight my curiosity,
-          learning, and versatility as a developer.
+          Additional projects and experiments that highlight my curiosity, learning, and versatility as a developer.
         </p>
       </div>
       <div className="grid grid-cols-2 gap-5">
@@ -19,10 +18,11 @@ const ExtraProjects = () => {
           <CardContainer key={project.title}>
             <div className="flex flex-col h-full justify-between">
               <div>
-                <p>{project.title}</p>
-                <p className="text-sm text-text-muted mt-2">
-                  {project.description}
-                </p>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <p>{project.title}</p>
+                </div>
+                <p className="text-sm text-text-muted mt-2">{project.description}</p>
               </div>
               <div className="flex items-end justify-end mt-6 gap-3">
                 {project.info?.githubUrl && (
