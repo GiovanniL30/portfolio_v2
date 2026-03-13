@@ -47,10 +47,6 @@ const RootLayout = () => {
               </Panel> */}
             </Group>
           </Panel>
-          <Separator className="w-.5 border-l border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
-          <Panel defaultSize={2} collapsible minSize={200} collapsedSize={10}>
-            right
-          </Panel>
         </Group>
       </div>
     </div>

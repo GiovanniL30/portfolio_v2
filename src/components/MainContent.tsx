@@ -13,7 +13,7 @@ const MainContent = () => {
       <div className="flex-1 min-h-0 flex flex-col">
         <div className="p-4 h-full">
           <ActiveFileSourcePath />
-          <div className="flex-1 h-full overflow-y-auto">{activeFile?.content ? activeFile.content() : <NoOpenTab />}</div>
+          <div>{activeFile?.content ? activeFile.content() : <NoOpenTab />}</div>
         </div>
       </div>
     </div>

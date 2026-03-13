@@ -1,7 +1,7 @@
 import type { FileNode } from "../@types/fileSystem";
 import About from "../components/tabs/about/About";
 import Contact from "../components/tabs/about/Contact";
-import GitInfo from "../components/tabs/git/GitInfo";
+import GitInfo from "../components/tabs/GitInfo";
 import Home from "../components/tabs/Home";
 import Projects from "../components/tabs/projects/Projects";
 import Readme from "../components/tabs/Readme";

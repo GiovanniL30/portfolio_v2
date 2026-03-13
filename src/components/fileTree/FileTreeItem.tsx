@@ -10,7 +10,7 @@ type FileTreeItemProps = {
 };
 
 const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(node.name === "src" ? true : false);
   const { activeFile, openFile } = useEditor();
 
   if (node.type === "folder") {
