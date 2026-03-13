@@ -1,33 +1,19 @@
 import type { Project } from "../@types/fileSystem";
+import suitliferImage from "../assets/images/suitelifer.png";
+import cca_landing from "../assets/images/cca_landing.png";
+import ptV1 from "../assets/images/portfolio_v1.png";
+import aeiluminate from "../assets/images/aeiluminate.webp";
+
+export const personalGithubLink = "https://github.com/GiovanniL30";
+export const linkedInLink = "https://www.linkedin.com/in/giovanni-leo-4774ab255/";
 
 export const skills = {
-  frontend: [
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-    "TailwindCSS",
-    "Zustand",
-    "Vite",
-  ],
-  backend: [
-    "Node.js",
-    "Express",
-    "Prisma",
-    "PostgreSQL",
-    "REST API",
-    "Prisma ORM",
-  ],
+  frontend: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "TailwindCSS", "Zustand", "Vite"],
+  backend: ["Node.js", "Express", "Prisma", "PostgreSQL", "REST API", "Prisma ORM"],
   backend_services: [
     "AWS (simple stuffs)",
     {
-      google: [
-        "GDrive Integration",
-        "GSheets Integration",
-        "App Script",
-        "GCP (simple stuffs)",
-      ],
+      google: ["GDrive Integration", "GSheets Integration", "App Script", "GCP (simple stuffs)"],
     },
     "Slack Bot",
     "Appwrite",
@@ -41,6 +27,7 @@ export const skills = {
 export const featuredProjects: Project[] = [
   {
     badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Devops"],
+
     title: "Tseksuite - Test Management System",
     info: {
       year: "2026",
@@ -50,6 +37,7 @@ export const featuredProjects: Project[] = [
   },
   {
     badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Devops"],
+    images: [suitliferImage],
     title: "Suitelifer",
     info: {
       year: "2026",
@@ -69,16 +57,9 @@ export const featuredProjects: Project[] = [
       "This is a integrated API that replaces the old system they currently used and developed better and bug free API backend integrated with the main Suitelifer portal",
   },
   {
-    badge: [
-      "React",
-      "Tailwind",
-      "Express",
-      "Prisma",
-      "MySql",
-      "Appwrite",
-      "Capstone Project",
-    ],
+    badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Appwrite", "Capstone Project"],
     title: "Ticketing System for the Center for Culture and the Arts",
+    images: [cca_landing],
     info: {
       year: "2025",
       liveUrl: "https://slu-cca.vercel.app/login",
@@ -90,6 +71,7 @@ export const featuredProjects: Project[] = [
   {
     badge: ["React", "Tailwind", "Portfolio"],
     title: "Personal Portfolio (v1)",
+    images: [ptV1],
     info: {
       year: "2025",
       liveUrl: "https://giovannileo.onrender.com",
@@ -101,6 +83,7 @@ export const featuredProjects: Project[] = [
   {
     badge: ["Express", "React", "MySql", "Appwrite", "School Project"],
     title: "School Project Social Media Website",
+    images: [aeiluminate],
     info: {
       year: "2024",
       githubUrl: "http://github.com/GiovanniL30/aeiluminate-alumni",
@@ -129,7 +112,6 @@ export const extraProjects: Project[] = [
       liveUrl: "https://techwonder.onrender.com/",
       githubUrl: "https://github.com/GiovanniL30/TechWonder",
     },
-    description:
-      "Simple E-commerce website for viewing and adding items to the cart",
+    description: "Simple E-commerce website for viewing and adding items to the cart",
   },
 ];

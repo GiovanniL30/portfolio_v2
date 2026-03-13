@@ -3,6 +3,7 @@ import type { FileNode } from "../@types/fileSystem";
 
 export type EditorState = {
   openTabs: FileNode[];
+  topRef: React.RefObject<HTMLDivElement | null>;
   activeFile: FileNode | null;
   openFile: (file: FileNode) => void;
   closeTab: (file: FileNode) => void;

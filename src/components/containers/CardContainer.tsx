@@ -8,7 +8,7 @@ type CardContainerProps = {
 const CardContainer = ({ className, children }: CardContainerProps) => {
   return (
     <div
-      className={`w-full border border-text-muted/50 rounded-md p-3 lg:px-5 lg:py-8 bg-surface hover:shadow-[0_0_5px_var(--brand-primary)] duration-100 ease-linear transition-all hover:bg-surface-hover/50  ${className}`}
+      className={`w-full flex flex-col  p-4 bg-background shadow rounded-lg transition-all duration-200 hover:bg-surface-hover/50 hover:shadow-xl hover:scale-[1.04] hover:border-primary border border-text-muted ${className}`}
     >
       {children}
     </div>

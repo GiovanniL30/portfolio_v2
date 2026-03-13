@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import type { FileNode } from "../@types/fileSystem";
 import { EditorContext } from "./editorState";
 import { homeTab } from "../data/fileSystem.tsx";
@@ -6,12 +6,16 @@ import { homeTab } from "../data/fileSystem.tsx";
 export const EditorProvider = ({ children }: { children: ReactNode }) => {
   const [openTabs, setOpenTabs] = useState<FileNode[]>([homeTab]);
   const [activeFile, setActiveFile] = useState<FileNode | null>(homeTab);
+  const topRef = useRef<HTMLDivElement | null>(null);
 
   const openFile = (file: FileNode) => {
     if (!openTabs.some((tab) => tab.name === file.name)) {
       setOpenTabs((prev) => [...prev, file]);
     }
     setActiveFile(file);
+    setTimeout(() => {
+      topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
   };
 
   const closeTab = (file: FileNode) => {
@@ -30,11 +34,15 @@ export const EditorProvider = ({ children }: { children: ReactNode }) => {
       const withoutAbout = prev.filter((c) => c.name !== file.name);
       return [file, ...withoutAbout];
     });
+    setTimeout(() => {
+      topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
   };
 
   return (
     <EditorContext.Provider
       value={{
+        topRef,
         setOpenTab,
         openTabs,
         activeFile,
