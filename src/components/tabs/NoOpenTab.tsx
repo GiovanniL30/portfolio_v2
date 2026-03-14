@@ -1,7 +1,7 @@
 import { useEditor } from "../../context/useEditor";
 import { CodeIcon } from "lucide-react";
 import Button from "../ui/Button";
-import { aboutTab, homeTab, projectsTab } from "../../data/fileSystem";
+import { aboutTab, projectsTab, readMeTab } from "../../data/fileSystem";
 
 const NoOpenTab = () => {
   const { setOpenTab } = useEditor();
@@ -14,25 +14,13 @@ const NoOpenTab = () => {
       <div className="flex items-start gap-5 mt-10">
         <p className="text-xs">Quick Actions:</p>
         <div className="text-xs flex flex-col gap-5">
-          <Button
-            onClick={() => setOpenTab(homeTab)}
-            className="p-2!"
-            variant="outline"
-          >
-            Home
+          <Button onClick={() => setOpenTab(readMeTab)} className="p-2!" variant="outline">
+            ReadMe
           </Button>
-          <Button
-            onClick={() => setOpenTab(aboutTab)}
-            className="p-2!"
-            variant="outline"
-          >
+          <Button onClick={() => setOpenTab(aboutTab)} className="p-2!" variant="outline">
             About Me
           </Button>
-          <Button
-            onClick={() => setOpenTab(projectsTab)}
-            className="p-2!"
-            variant="outline"
-          >
+          <Button onClick={() => setOpenTab(projectsTab)} className="p-2!" variant="outline">
             Projects
           </Button>
         </div>

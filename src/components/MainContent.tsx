@@ -1,7 +1,7 @@
 import { useEditor } from "../context/useEditor";
 import NoOpenTab from "./tabs/NoOpenTab";
-import OpenedTabs from "./tabs/components/OpenedTabs";
-import ActiveFileSourcePath from "./tabs/components/ActiveFileSourcePath";
+import OpenedTabs from "./OpenedTabs";
+import ActiveFileSourcePath from "./ActiveFileSourcePath";
 
 const MainContent = () => {
   const { activeFile, topRef } = useEditor();

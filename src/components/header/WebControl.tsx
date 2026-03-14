@@ -12,7 +12,11 @@ const WebControl = () => {
   }, []);
 
   const handleFullscreen = useCallback(() => {
-    isFullscreen ? exitFullscreen() : enterFullscreen();
+    if (isFullscreen) {
+      exitFullscreen();
+    } else {
+      enterFullscreen();
+    }
   }, [isFullscreen, enterFullscreen, exitFullscreen]);
 
   useEffect(() => {

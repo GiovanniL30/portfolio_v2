@@ -1,11 +1,11 @@
 import { useRef, useState, type ReactNode } from "react";
 import type { FileNode } from "../@types/fileSystem";
 import { EditorContext } from "./editorState";
-import { homeTab } from "../data/fileSystem.tsx";
+import { aboutTab, readMeTab } from "../data/fileSystem";
 
 export const EditorProvider = ({ children }: { children: ReactNode }) => {
-  const [openTabs, setOpenTabs] = useState<FileNode[]>([homeTab]);
-  const [activeFile, setActiveFile] = useState<FileNode | null>(homeTab);
+  const [openTabs, setOpenTabs] = useState<FileNode[]>([readMeTab, aboutTab]);
+  const [activeFile, setActiveFile] = useState<FileNode | null>(readMeTab);
   const topRef = useRef<HTMLDivElement | null>(null);
 
   const openFile = (file: FileNode) => {

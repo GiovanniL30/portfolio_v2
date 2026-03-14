@@ -12,9 +12,24 @@ const GitInfo = () => {
 
   if (loadingRepos || loadingUser || totalCommit === undefined || totalStars === undefined) {
     return (
-      <div className="w-full mx-auto max-w-150 flex items-center justify-center h-40">
-        <span className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></span>
-        <span className="ml-4 text-lg font-medium text-text-muted">Loading GitHub stats...</span>
+      <div className="w-full mx-auto max-w-150">
+        <div className="flex items-center gap-4">
+          <div className="rounded-full bg-text-muted/50 h-24 w-24 animate-pulse" />
+          <div className="flex-1 space-y-2 py-2">
+            <div className="h-6 bg-text-muted/50 rounded-md w-1/3 animate-pulse" />
+            <div className="h-4 bg-text-muted/50 rounded-md w-1/4 animate-pulse" />
+          </div>
+          <div className="w-28">
+            <div className="h-10 bg-text-muted/50 rounded-md animate-pulse" />
+          </div>
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="p-4 bg-text-muted/50 shadow rounded-lg animate-pulse h-28" />
+          <div className="p-4 bg-text-muted/50 shadow rounded-lg animate-pulse h-28" />
+          <div className="p-4 bg-text-muted/50 shadow rounded-lg animate-pulse h-28" />
+          <div className="p-4 bg-text-muted/50 shadow rounded-lg animate-pulse h-28" />
+        </div>
       </div>
     );
   }
@@ -22,7 +37,7 @@ const GitInfo = () => {
   if (userError || reposError || totalCommitError || totalStarsError) {
     return (
       <div className="w-full mx-auto max-w-150 flex items-center justify-center h-40">
-        <span className="text-red-500 font-semibold">Error loading GitHub stats.</span>
+        <span className="text-error font-semibold">Error loading GitHub stats.</span>
       </div>
     );
   }
