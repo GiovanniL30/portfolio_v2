@@ -17,7 +17,7 @@ const items = [
 
 const ActivityBar = () => {
   return (
-    <div className="flex flex-col gap-5  border-r-[0.5px] border-text-muted/50 w-fit h-full bg-surface/30">
+    <div className="flex flex-col gap-5  border-r-[0.5px] border-text-muted/50 w-fit h-full bg-surface">
       {items.map((item, index) => (
         <NavLink
           className={({ isActive }) => `relative border-l-2 ${isActive ? "border-l-primary " : "border-l-transparent"}`}
