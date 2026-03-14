@@ -1,6 +1,6 @@
-import ActionsBar from "./components/ActionsBar";
-import VsControl from "./components/VsControl";
-import WebControl from "./components/WebControl";
+import ActionsBar from "./ActionsBar";
+import VsControl from "./VsControl";
+import WebControl from "./WebControl";
 
 const Header = () => {
   return (

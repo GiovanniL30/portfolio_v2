@@ -1,5 +1,5 @@
-import logo from "../../../assets/icons/vscode.png";
-import Button from "../../ui/Button";
+import logo from "../../assets/icons/vscode.png";
+import Button from "../ui/Button";
 
 const controls = ["Terminal", "Help"];
 

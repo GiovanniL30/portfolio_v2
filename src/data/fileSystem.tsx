@@ -2,16 +2,8 @@ import type { FileNode } from "../@types/fileSystem";
 import About from "../components/tabs/about/About";
 import Contact from "../components/tabs/about/Contact";
 import GitInfo from "../components/tabs/GitInfo";
-import Home from "../components/tabs/Home";
 import Projects from "../components/tabs/projects/Projects";
 import Readme from "../components/tabs/Readme";
-
-export const homeTab: FileNode = {
-  name: "home.tsx",
-  path: "src/home.tsx",
-  type: "file",
-  content: () => <Home />,
-};
 
 export const aboutTab: FileNode = {
   name: "about-me.tsx",
@@ -27,6 +19,27 @@ export const projectsTab: FileNode = {
   content: () => <Projects />,
 };
 
+export const readMeTab: FileNode = {
+  name: "README.md",
+  path: "src/README.md",
+  type: "file",
+  content: () => <Readme />,
+};
+
+export const gitInfoTab: FileNode = {
+  name: "info.git",
+  path: "src/info.git",
+  type: "file",
+  content: () => <GitInfo />,
+};
+
+export const contactTab: FileNode = {
+  name: "contact.json",
+  path: "src/about/contact.json",
+  type: "file",
+  content: () => <Contact />,
+};
+
 export const fileSystem: FileNode[] = [
   {
     name: "src",
@@ -37,7 +50,7 @@ export const fileSystem: FileNode[] = [
         name: "about",
         path: "src/about",
         type: "folder",
-        children: [aboutTab, { name: "contact.json", path: "src/about/contact.json", type: "file", content: () => <Contact /> }],
+        children: [aboutTab, contactTab],
       },
       {
         name: "projects",
@@ -45,20 +58,8 @@ export const fileSystem: FileNode[] = [
         type: "folder",
         children: [projectsTab],
       },
-      {
-        name: "info.git",
-        path: "src/info.git",
-        type: "file",
-        content: () => <GitInfo />,
-      },
+      gitInfoTab,
     ],
   },
-  homeTab,
-
-  {
-    name: "README.md",
-    path: "src/README.md",
-    type: "file",
-    content: () => <Readme />,
-  },
+  readMeTab,
 ];

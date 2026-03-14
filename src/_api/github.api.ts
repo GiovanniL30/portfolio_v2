@@ -45,7 +45,7 @@ export const useGetTotalCommits = (userName: string) => {
             }
           }
           return commitsResponse.data.length;
-        } catch (e) {
+        } catch {
           return 0;
         }
       });
