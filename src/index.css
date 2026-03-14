@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --font-vscode-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -385,7 +386,149 @@ input::placeholder {
   background: transparent;
 }
 
+/* Small scrollbar utility: use class `small-scroll` to apply */
+.small-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-surface-hover) transparent;
+}
+.small-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.small-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.small-scroll::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-hover);
+  border-radius: 6px;
+}
+.small-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
 .gradient-divider {
   background: linear-gradient(90deg, var(--brand-primary-hover) 0%, var(--brand-primary) 50%, var(--brand-primary-hover) 100%);
   box-shadow: 0 0 12px 0 var(--brand-primary-hover);
+}
+
+.markdown {
+  line-height: 1.35;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+/* Headings */
+.markdown h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+.markdown h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  color: var(--text-main);
+}
+
+.markdown h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  color: var(--text-main);
+}
+
+/* Paragraphs */
+.markdown p {
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+/* Lists */
+.markdown ul,
+.markdown ol {
+  padding-left: 18px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  color: var(--text-main);
+}
+
+.markdown li {
+  margin: 0px;
+}
+
+/* Bold */
+.markdown strong {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Links */
+.markdown a {
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+/* Inline code */
+.markdown code {
+  background: var(--bg-surface-hover);
+  color: var(--text-main);
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: var(--font-vscode-editor);
+}
+
+/* Code blocks */
+.markdown pre {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 10px 0;
+  border: 1px solid var(--ui-border-strong);
+  font-family: var(--font-vscode-editor);
+}
+
+.markdown pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--text-main);
+}
+
+/* Blockquotes */
+.markdown blockquote {
+  border-left: 3px solid var(--brand-accent);
+  padding-left: 12px;
+  color: var(--text-muted);
+  margin: 8px 0;
+  font-style: italic;
+}
+
+/* Tables */
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid var(--ui-border);
+  padding: 6px 8px;
+  color: var(--text-main);
+}
+
+.markdown th {
+  background-color: var(--bg-surface-hover);
+  font-weight: 600;
 }
