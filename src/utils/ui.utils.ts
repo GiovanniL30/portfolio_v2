@@ -48,6 +48,48 @@ const blendWithOpacity = (fg: string, bg: string, opacity: number): string => {
   return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 };
 
+const parseColor = (color: string): { r: number; g: number; b: number } | null => {
+  const cleaned = color.trim();
+
+  if (/^#[0-9a-fA-F]{6}$/.test(cleaned)) {
+    return {
+      r: parseInt(cleaned.slice(1, 3), 16),
+      g: parseInt(cleaned.slice(3, 5), 16),
+      b: parseInt(cleaned.slice(5, 7), 16),
+    };
+  }
+
+  if (/^#[0-9a-fA-F]{3}$/.test(cleaned)) {
+    return {
+      r: parseInt(cleaned[1] + cleaned[1], 16),
+      g: parseInt(cleaned[2] + cleaned[2], 16),
+      b: parseInt(cleaned[3] + cleaned[3], 16),
+    };
+  }
+
+  const rgbMatch = cleaned.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+  if (rgbMatch) {
+    return {
+      r: parseInt(rgbMatch[1]),
+      g: parseInt(rgbMatch[2]),
+      b: parseInt(rgbMatch[3]),
+    };
+  }
+
+  return null;
+};
+
+const toHex = (color: string, fallback = "#888888"): string => {
+  const parsed = parseColor(color);
+  if (!parsed) return fallback;
+  const { r, g, b } = parsed;
+  return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+};
+
+const token = (v: string, fallback = "888888"): string => toHex(v, `#${fallback}`).replace("#", "");
+
+const color = (v: string, fallback = "#888888"): string => toHex(v, fallback);
+
 export const buildMonacoTheme = (): editor.IStandaloneThemeData => {
   const bg = getCSSVar("--bg-base");
   const surface = getCSSVar("--bg-surface");
@@ -62,13 +104,8 @@ export const buildMonacoTheme = (): editor.IStandaloneThemeData => {
   const type = getCSSVar("--vsc-token-type");
   const operator = getCSSVar("--vsc-token-operator");
 
-  const token = (v: string) => v.replace("#", "");
-  const color = (v: string) => (v.startsWith("#") ? v : `#${v}`);
-
-  const r = parseInt(bg.slice(1, 3), 16);
-  const g = parseInt(bg.slice(3, 5), 16);
-  const b = parseInt(bg.slice(5, 7), 16);
-  const isLight = (r * 299 + g * 587 + b * 114) / 1000 > 128;
+  const bgParsed = parseColor(bg);
+  const isLight = bgParsed ? (bgParsed.r * 299 + bgParsed.g * 587 + bgParsed.b * 114) / 1000 > 128 : false;
 
   const editorBg = blendWithOpacity(surface, bg, 0.6);
 
