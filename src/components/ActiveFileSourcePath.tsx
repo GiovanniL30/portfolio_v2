@@ -6,7 +6,7 @@ const ActiveFileSourcePath = () => {
   return (
     <>
       {activeFile?.path && (
-        <div className="flex items-center gap-1 text-xs text-text-muted mb-3 z-10">
+        <div className="flex items-center gap-1 text-xs text-text-muted z-10 p-2">
           {activeFile.path.split("/").map((segment, i, arr) => (
             <span key={i} className="flex items-center gap-1">
               {i > 0 && <ChevronRightIcon size={12} />}
