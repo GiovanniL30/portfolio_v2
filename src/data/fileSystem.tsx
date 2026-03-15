@@ -1,6 +1,7 @@
 import type { FileNode } from "../@types/fileSystem";
 import About from "../components/tabs/about/About";
 import Contact from "../components/tabs/about/Contact";
+import CodeEditor from "../components/tabs/codeEditor/CodeEditor";
 import GitInfo from "../components/tabs/GitInfo";
 import Projects from "../components/tabs/projects/Projects";
 import Readme from "../components/tabs/Readme";
@@ -40,6 +41,13 @@ export const contactTab: FileNode = {
   content: () => <Contact />,
 };
 
+export const codeEditorTab: FileNode = {
+  name: "code-editor.wika",
+  path: "src/code-editor.wika",
+  type: "file",
+  content: () => <CodeEditor />,
+};
+
 export const fileSystem: FileNode[] = [
   {
     name: "src",
@@ -52,12 +60,14 @@ export const fileSystem: FileNode[] = [
         type: "folder",
         children: [aboutTab, contactTab],
       },
+
       {
         name: "projects",
         path: "src/projects",
         type: "folder",
         children: [projectsTab],
       },
+      codeEditorTab,
       gitInfoTab,
     ],
   },
