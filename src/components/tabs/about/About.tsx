@@ -34,7 +34,7 @@ const About = () => {
   const { setOpenTab } = useEditor();
 
   return (
-    <div className="h-full flex flex-col w-full justify-center items-center mt-5 max-w-150  mx-auto">
+    <div className="flex flex-col w-full justify-center items-center mt-5 max-w-150  mx-auto">
       <div className="flex flex-col w-full items-center">
         <img className="w-60 h-60 rounded-full object-cover border-2 border-primary drop-shadow-[0_0_6px_var(--brand-primary)]" src={me} alt="me" />
         <div className="w-full mt-15 flex flex-col gap-2">
