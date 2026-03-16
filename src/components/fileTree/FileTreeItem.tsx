@@ -1,8 +1,9 @@
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import type { FileNode } from "../../@types/fileSystem";
-import { useEditor } from "../../context/useEditor";
+
 import { getFileIcon } from "../../utils/ui.utils";
+import { useEditorStore } from "../../store/useEditorStore";
 
 type FileTreeItemProps = {
   node: FileNode;
@@ -11,7 +12,7 @@ type FileTreeItemProps = {
 
 const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
   const [isOpen, setIsOpen] = useState(node.name === "src" ? true : false);
-  const { activeFile, openFile } = useEditor();
+  const { activeFile, openFile } = useEditorStore();
 
   if (node.type === "folder") {
     return (
@@ -21,11 +22,22 @@ const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
           onClick={() => setIsOpen(!isOpen)}
           style={{ paddingLeft: depth * 12 }}
         >
-          {isOpen ? <ChevronDownIcon size={16} /> : <ChevronRightIcon size={16} />}
-          <img src={isOpen ? getFileIcon("openFolder") : getFileIcon("folder")} alt="folder" className="w-4 h-4" />
+          {isOpen ? (
+            <ChevronDownIcon size={16} />
+          ) : (
+            <ChevronRightIcon size={16} />
+          )}
+          <img
+            src={isOpen ? getFileIcon("openFolder") : getFileIcon("folder")}
+            alt="folder"
+            className="w-4 h-4"
+          />
           <span className="text-nowrap">{node.name}</span>
         </button>
-        {isOpen && node.children?.map((child) => <FileTreeItem key={child.name} node={child} depth={depth + 1} />)}
+        {isOpen &&
+          node.children?.map((child) => (
+            <FileTreeItem key={child.name} node={child} depth={depth + 1} />
+          ))}
       </div>
     );
   }
@@ -35,7 +47,9 @@ const FileTreeItem = ({ node, depth }: FileTreeItemProps) => {
   return (
     <button
       className={`flex items-center w-full gap-1 py-0.5 text-sm cursor-pointer mt-0.5 ${
-        isActive ? "bg-text-muted/20 text-text-main" : "text-text-muted hover:bg-text-muted/10"
+        isActive
+          ? "bg-text-muted/20 text-text-main"
+          : "text-text-muted hover:bg-text-muted/10"
       }`}
       style={{ paddingLeft: depth * 12 }}
       onClick={() => openFile(node)}

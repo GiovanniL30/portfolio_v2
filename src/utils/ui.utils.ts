@@ -22,7 +22,7 @@ export const getFileIcon = (name: string) => {
       return folderIcon;
     case "openfolder":
       return folderOpen;
-    case "wika":
+    case "tagalog":
       return wika;
     case "git":
       return git;
@@ -30,14 +30,18 @@ export const getFileIcon = (name: string) => {
 };
 
 export const getCSSVar = (name: string, fallback = ""): string => {
-  const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
 
   return value || fallback;
 };
 
 /* ---------------- COLOR HELPERS ---------------- */
 
-const parseColor = (color: string): { r: number; g: number; b: number } | null => {
+const parseColor = (
+  color: string,
+): { r: number; g: number; b: number } | null => {
   if (!color) return null;
 
   const cleaned = color.trim();
@@ -131,7 +135,9 @@ export const buildMonacoTheme = (): editor.IStandaloneThemeData => {
 
   const bgParsed = parseColor(bg);
 
-  const isLight = bgParsed ? (bgParsed.r * 299 + bgParsed.g * 587 + bgParsed.b * 114) / 1000 > 128 : false;
+  const isLight = bgParsed
+    ? (bgParsed.r * 299 + bgParsed.g * 587 + bgParsed.b * 114) / 1000 > 128
+    : false;
 
   const editorBg = blendWithOpacity(surface, bg, 0.6);
 
