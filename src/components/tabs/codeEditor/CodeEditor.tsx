@@ -1,19 +1,44 @@
-import Editor, { type Monaco, type OnMount } from "@monaco-editor/react";
+import Editor, {
+  type Monaco,
+  type OnMount,
+  type BeforeMount,
+} from "@monaco-editor/react";
 import { buildMonacoTheme } from "../../../utils/ui.utils";
 import { useEffect, useRef } from "react";
-import { useGetKeywords } from "../../../_api/compiler.api";
 import type { Keyword } from "../../../@types/compiler";
 import { useCodeEditorStore } from "../../../store/useCodeEditorStore";
 
-const registerWikang = (monaco: Monaco, keywords: Keyword[]) => {
-  const id = "wikang";
+const THEME_NAME = "wikang-theme";
 
+const WIKANG_KEYWORDS: Keyword[] = [
+  "ilagay",
+  "hindi",
+  "mabago",
+  "ilabas",
+  "kapag",
+  "kung",
+  "kundi",
+  "ulitin",
+  "habang",
+  "tigil",
+  "tuloy",
+  "gawa",
+  "ibalik",
+  "tama",
+  "mali",
+  "wala",
+  "hindi mabago",
+  "kung hindi",
+];
+
+const registerWikang = (monaco: Monaco) => {
+  const id = "wikang";
   if (monaco.languages.getLanguages().some((l) => l.id === id)) return;
 
   monaco.languages.register({ id });
 
   monaco.languages.setMonarchTokensProvider(id, {
-    keywords,
+    keywords: WIKANG_KEYWORDS,
     tokenizer: {
       root: [
         [/#.*$/, "comment"],
@@ -21,18 +46,16 @@ const registerWikang = (monaco: Monaco, keywords: Keyword[]) => {
         [/"([^"\\]|\\.)*"/, "string"],
         [/'([^'\\]|\\.)*'/, "string"],
         [/\b\d+(\.\d+)?\b/, "number"],
+        [/hindi\s+mabago/, "keyword"],
+        [/kung\s+hindi/, "keyword"],
         [
-          /[a-zA-ZÀ-ÿ_][\w]*/,
-          {
-            cases: {
-              "@keywords": "keyword",
-              "@default": "identifier",
-            },
-          },
+          /[a-zA-ZÀ-ÿ_][a-zA-ZÀ-ÿ0-9_]*/,
+          { cases: { "@keywords": "keyword", "@default": "identifier" } },
         ],
         [/[=!<>]+/, "operator"],
         [/[+\-*/%]/, "operator"],
         [/[{}()[\],]/, "delimiter"],
+        [/\s+/, "white"],
       ],
     },
   });
@@ -45,7 +68,6 @@ const registerWikang = (monaco: Monaco, keywords: Keyword[]) => {
         startColumn: position.column,
         endColumn: position.column,
       };
-
       const suggestions = [
         {
           label: "ilagay",
@@ -107,56 +129,51 @@ const registerWikang = (monaco: Monaco, keywords: Keyword[]) => {
           monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
         range,
       }));
-
       return { suggestions };
     },
   });
 };
 
-const applyTheme = (monaco: Monaco) => {
-  monaco.editor.defineTheme("wikang-theme", buildMonacoTheme());
-  monaco.editor.setTheme("wikang-theme");
-};
-
 const CodeEditor = () => {
   const { sourceCode, setSourceCode } = useCodeEditorStore();
-  const { data: keywords, isLoading: loadingKeywords } = useGetKeywords();
 
   const editorRef = useRef<Parameters<OnMount>[0] | null>(null);
   const monacoRef = useRef<Monaco | null>(null);
   const registeredRef = useRef(false);
 
   useEffect(() => {
-    if (!monacoRef.current || !keywords || registeredRef.current) return;
-    registerWikang(monacoRef.current, keywords.keywords);
-
+    if (!monacoRef.current || registeredRef.current) return;
+    registerWikang(monacoRef.current);
     const model = editorRef.current?.getModel();
     if (model) monacoRef.current.editor.setModelLanguage(model, "wikang");
     registeredRef.current = true;
-  }, [keywords]);
+  }, []);
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
       if (!monacoRef.current) return;
-      applyTheme(monacoRef.current);
+      monacoRef.current.editor.defineTheme(THEME_NAME, buildMonacoTheme());
+      monacoRef.current.editor.setTheme(THEME_NAME);
     });
-
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["data-theme"],
     });
-
     return () => observer.disconnect();
   }, []);
+
+  const handleBeforeMount: BeforeMount = (monaco) => {
+    monaco.editor.defineTheme(THEME_NAME, buildMonacoTheme());
+  };
 
   const handleMount: OnMount = (editor, monaco) => {
     editorRef.current = editor;
     monacoRef.current = monaco;
 
-    applyTheme(monaco);
+    monaco.editor.setTheme(THEME_NAME);
 
-    if (keywords && !registeredRef.current) {
-      registerWikang(monaco, keywords.keywords);
+    if (!registeredRef.current) {
+      registerWikang(monaco);
       const model = editor.getModel();
       if (model) monaco.editor.setModelLanguage(model, "wikang");
       registeredRef.current = true;
@@ -168,28 +185,27 @@ const CodeEditor = () => {
   };
 
   return (
-    <>
-      <Editor
-        loading={loadingKeywords ? "Naglo-load…" : undefined}
-        className="-ml-2"
-        defaultLanguage="plaintext"
-        defaultValue={sourceCode}
-        value={sourceCode}
-        onChange={(e) => setSourceCode(e ?? "")}
-        onMount={handleMount}
-        options={{
-          fontSize: 14,
-          fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-          fontLigatures: true,
-          minimap: { enabled: false },
-          scrollBeyondLastLine: false,
-          lineNumbers: "on",
-          renderLineHighlight: "line",
-          padding: { top: 16 },
-          tabSize: 2,
-        }}
-      />
-    </>
+    <Editor
+      loading={"Loading…"}
+      className="-ml-2"
+      defaultLanguage="plaintext"
+      defaultValue={sourceCode}
+      value={sourceCode}
+      onChange={(e) => setSourceCode(e ?? "")}
+      beforeMount={handleBeforeMount}
+      onMount={handleMount}
+      options={{
+        fontSize: 14,
+        fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+        fontLigatures: true,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        lineNumbers: "on",
+        renderLineHighlight: "line",
+        padding: { top: 16 },
+        tabSize: 2,
+      }}
+    />
   );
 };
 
