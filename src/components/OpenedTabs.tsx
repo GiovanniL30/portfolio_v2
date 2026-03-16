@@ -1,10 +1,11 @@
-import { useEditor } from "../context/useEditor";
 import { getFileIcon } from "../utils/ui.utils";
 import { XIcon } from "lucide-react";
 import { useRef, useState } from "react";
+import { useEditorStore } from "../store/useEditorStore";
 
 const OpenedTabs = () => {
-  const { openTabs, activeFile, setActiveFile, closeTab, setOpenTabs } = useEditor();
+  const { openTabs, activeFile, setActiveFile, closeTab, setOpenTabs } =
+    useEditorStore();
   const dragIndex = useRef<number | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
 
@@ -34,12 +35,10 @@ const OpenedTabs = () => {
       setDragOverIndex(null);
       return;
     }
-    setOpenTabs((prev) => {
-      const next = prev.slice();
-      const [moved] = next.splice(from, 1);
-      next.splice(to, 0, moved);
-      return next;
-    });
+    const next = openTabs.slice();
+    const [moved] = next.splice(from, 1);
+    next.splice(to, 0, moved);
+    setOpenTabs(next);
     dragIndex.current = null;
     setDragOverIndex(null);
   };
@@ -56,7 +55,9 @@ const OpenedTabs = () => {
               onDragOver={(e) => handleDragOver(e, idx)}
               onDrop={(e) => handleDrop(e, idx)}
               className={`flex items-center gap-1 px-3 py-1.5 text-sm cursor-pointer border-r border-text-muted/20 select-none ${
-                activeFile?.name === tab.name ? "bg-base text-text-main border-t border-t-primary" : "text-text-muted hover:bg-text-muted/10"
+                activeFile?.name === tab.name
+                  ? "bg-base text-text-main border-t border-t-primary"
+                  : "text-text-muted hover:bg-text-muted/10"
               } ${dragOverIndex === idx ? "ring-2 ring-offset-1 ring-primary/30" : ""}`}
               onClick={() => setActiveFile(tab)}
             >

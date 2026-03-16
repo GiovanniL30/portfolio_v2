@@ -1,8 +1,8 @@
 import { ChevronRightIcon } from "lucide-react";
-import { useEditor } from "../context/useEditor";
+import { useEditorStore } from "../store/useEditorStore";
 
 const ActiveFileSourcePath = () => {
-  const { activeFile } = useEditor();
+  const { activeFile } = useEditorStore();
   return (
     <>
       {activeFile?.path && (
@@ -10,7 +10,9 @@ const ActiveFileSourcePath = () => {
           {activeFile.path.split("/").map((segment, i, arr) => (
             <span key={i} className="flex items-center gap-1">
               {i > 0 && <ChevronRightIcon size={12} />}
-              <span className={i === arr.length - 1 ? "text-text-main" : ""}>{segment}</span>
+              <span className={i === arr.length - 1 ? "text-text-main" : ""}>
+                {segment}
+              </span>
             </span>
           ))}
         </div>

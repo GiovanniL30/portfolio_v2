@@ -1,4 +1,11 @@
-import { FolderGit2Icon, GitGraphIcon, GithubIcon, SquareArrowOutUpRightIcon, StarIcon, UserRoundIcon } from "lucide-react";
+import {
+  FolderGit2Icon,
+  GitGraphIcon,
+  GithubIcon,
+  SquareArrowOutUpRightIcon,
+  StarIcon,
+  UserRoundIcon,
+} from "lucide-react";
 import { useGetGithubInfo } from "../../hooks/useGetGithubInfo.ts";
 import CardContainer from "../containers/CardContainer.tsx";
 import Button from "../ui/Button.tsx";
@@ -7,10 +14,25 @@ import { personalGithubLink } from "../../data/content.ts";
 const USERNAME = "GiovanniL30";
 
 const GitInfo = () => {
-  const { userInfo, loadingRepos, userError, userRepos, loadingUser, reposError, totalCommit, totalCommitError, totalStars, totalStarsError } =
-    useGetGithubInfo(USERNAME);
+  const {
+    userInfo,
+    loadingRepos,
+    userError,
+    userRepos,
+    loadingUser,
+    reposError,
+    totalCommit,
+    totalCommitError,
+    totalStars,
+    totalStarsError,
+  } = useGetGithubInfo(USERNAME);
 
-  if (loadingRepos || loadingUser || totalCommit === undefined || totalStars === undefined) {
+  if (
+    loadingRepos ||
+    loadingUser ||
+    totalCommit === undefined ||
+    totalStars === undefined
+  ) {
     return (
       <div className="w-full mx-auto max-w-150">
         <div className="flex items-center gap-4">
@@ -37,7 +59,9 @@ const GitInfo = () => {
   if (userError || reposError || totalCommitError || totalStarsError) {
     return (
       <div className="w-full mx-auto max-w-150 flex items-center justify-center h-40">
-        <span className="text-error font-semibold">Error loading GitHub stats.</span>
+        <span className="text-error font-semibold">
+          Error loading GitHub stats.
+        </span>
       </div>
     );
   }
@@ -45,20 +69,37 @@ const GitInfo = () => {
   return (
     <div className="w-full mx-auto max-w-150">
       <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full">
-        <img className="rounded-full w-24 h-24 sm:w-30 sm:h-30 object-cover border-3 border-primary" src={userInfo?.avatar_url} alt="" />
+        <img
+          className="rounded-full w-24 h-24 sm:w-30 sm:h-30 object-cover border-3 border-primary"
+          src={userInfo?.avatar_url}
+          alt=""
+        />
         <div className="flex flex-col gap-1 flex-1 items-center sm:items-start">
-          <p className="text-xl sm:text-2xl font-semibold tracking-wide">{userInfo?.name}</p>
+          <p className="text-xl sm:text-2xl font-semibold tracking-wide">
+            {userInfo?.name}
+          </p>
           <p className="text-text-muted">@{USERNAME}</p>
         </div>
-        <a href={personalGithubLink} target="_blank" className="mt-3 sm:mt-0 sm:ml-auto w-full md:w-fit">
-          <Button variant="primary" className="flex items-center gap-2 p-2! px-4! text-xs sm:text-sm w-full justify-center md:w-fit">
+        <a
+          href={personalGithubLink}
+          target="_blank"
+          className="mt-3 sm:mt-0 sm:ml-auto w-full md:w-fit"
+        >
+          <Button
+            variant="primary"
+            className="flex items-center gap-2 p-2! px-4! text-xs sm:text-sm w-full justify-center md:w-fit"
+          >
             <GithubIcon size={18} />
             <p>Github</p>
           </Button>
         </a>
       </div>
       <div className="mt-8 hidden lg:block">
-        <img className="max-h-full" src={`https://ghchart.rshah.org/${USERNAME}`} alt="GitHub Contribution Chart" />
+        <img
+          className="max-h-full"
+          src={`https://ghchart.rshah.org/${USERNAME}`}
+          alt="GitHub Contribution Chart"
+        />
       </div>
 
       <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -86,7 +127,9 @@ const GitInfo = () => {
 
       <div className="mb-5 w-full">
         <div className="flex w-full justify-between items-center">
-          <p className="text-xl uppercase font-semibold tracking-tight my-10">Top Repositories</p>
+          <p className="text-xl uppercase font-semibold tracking-tight my-10">
+            Top Repositories
+          </p>
           <a href={`${personalGithubLink}?tab=repositories`} target="_blank">
             <button className="flex items-center gap-1 text-primary cursor-pointer group transition-all ease-in text-sm">
               <p className="group-hover:pr-1 transition-all">View All</p>
@@ -101,15 +144,25 @@ const GitInfo = () => {
               .sort((a, b) => (b.forks_count || 0) - (a.forks_count || 0))
               .slice(0, 10);
             return sortedRepos?.map((repo) => (
-              <a href={repo.html_url} target="_blank" rel="noopener noreferrer" key={repo.id} className="block min-h-full group">
+              <a
+                href={repo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={repo.id}
+                className="block min-h-full group"
+              >
                 <CardContainer className="h-full">
                   <div className="flex items-center justify-between gap-2 mb-2 w-full">
-                    <span className="font-semibold text-lg  text-primary">{repo.name}</span>
+                    <span className="font-semibold text-lg  text-primary">
+                      {repo.name}
+                    </span>
                     <button className="text-text-muted">
                       <SquareArrowOutUpRightIcon size={15} />
                     </button>
                   </div>
-                  <p className="text-xs text-text-muted mb-2 line-clamp-1">{repo.description || "No description"}</p>
+                  <p className="text-xs text-text-muted mb-2 line-clamp-1">
+                    {repo.description || "No description"}
+                  </p>
                   <div className="flex gap-4 mt-auto text-sm">
                     <span className="flex items-center gap-1 text-yellow-400">
                       <StarIcon size={16} />
