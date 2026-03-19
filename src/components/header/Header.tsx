@@ -4,7 +4,7 @@ import WebControl from "./WebControl";
 
 const Header = () => {
   return (
-    <header className="border-b border-b-text-muted/50 p-3 py-1.5 flex justify-between items-center">
+    <header className="border-b border-b-text-muted/50 p-3 py-1.5 flex justify-between items-center gap-3">
       <VsControl />
       <ActionsBar />
       <WebControl />

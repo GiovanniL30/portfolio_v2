@@ -3,26 +3,102 @@ import suitliferImage from "../assets/images/suitelifer.png";
 import cca_landing from "../assets/images/cca_landing.png";
 import ptV1 from "../assets/images/portfolio_v1.png";
 import aeiluminate from "../assets/images/aeiluminate.webp";
+import {
+  Atom, // React
+  Globe, // Next.js
+  Code2, // TypeScript
+  FileCode, // JavaScript
+  FileType, // HTML5
+  Palette, // CSS3
+  Wind, // TailwindCSS
+  Box, // Zustand
+  ShieldCheck, // Zod
+  Zap, // Vite
+  Server, // Node.js
+  Layers, // Express
+  Database, // PostgreSQL
+  GitMerge, // Prisma ORM
+  Network, // REST API
+  Cloud, // AWS
+  CloudCog, // GCP
+  HardDrive, // Google Drive
+  Table2, // Google Sheets
+  ScrollText, // Apps Script
+  MessageSquare, // Slack Bot
+  Flame, // Firebase
+  Cpu, // Supabase
+  AppWindow, // Appwrite
+  GitBranch, // Git
+  Terminal, // VS Code
+  PenTool, // Figma
+  Send, // Postman
+  ScanLine, // ESLint
+  WandSparkles, // Prettier
+  Bot, // GitHub Copilot
+  Sparkles, // ChatGPT
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 export const personalGithubLink = "https://github.com/GiovanniL30";
-export const linkedInLink = "https://www.linkedin.com/in/giovanni-leo-4774ab255/";
+export const linkedInLink =
+  "https://www.linkedin.com/in/giovanni-leo-4774ab255/";
+
+export type Skill = {
+  name: string;
+  icon: LucideIcon;
+};
+
+export type SkillCategory = keyof typeof skills;
 
 export const skills = {
-  frontend: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "TailwindCSS", "Zustand", "Vite"],
-  backend: ["Node.js", "Express", "Prisma", "PostgreSQL", "REST API", "Prisma ORM"],
-  backend_services: [
-    "AWS (simple stuffs)",
-    {
-      google: ["GDrive Integration", "GSheets Integration", "App Script", "GCP (simple stuffs)"],
-    },
-    "Slack Bot",
-    "Appwrite",
-    "Supabase",
-    "Firebase",
+  frontend: [
+    { name: "React", icon: Atom },
+    { name: "Next.js", icon: Globe },
+    { name: "TypeScript", icon: Code2 },
+    { name: "JavaScript", icon: FileCode },
+    { name: "HTML5", icon: FileType },
+    { name: "CSS3", icon: Palette },
+    { name: "TailwindCSS", icon: Wind },
+    { name: "Zustand", icon: Box },
+    { name: "Zod", icon: ShieldCheck },
+    { name: "Vite", icon: Zap },
   ],
-  tools: ["Git", "VS Code", "Figma", "ESLint", "Prettier", "Postman"],
-  ai_tools: ["Github Copilot", "ChatGPT"],
-};
+
+  backend: [
+    { name: "Node.js", icon: Server },
+    { name: "Express", icon: Layers },
+    { name: "PostgreSQL", icon: Database },
+    { name: "Prisma ORM", icon: GitMerge },
+    { name: "REST API", icon: Network },
+    { name: "Zod", icon: ShieldCheck },
+  ],
+
+  cloud_and_services: [
+    { name: "AWS", icon: Cloud },
+    { name: "GCP", icon: CloudCog },
+    { name: "Google Drive", icon: HardDrive },
+    { name: "Google Sheets", icon: Table2 },
+    { name: "Apps Script", icon: ScrollText },
+    { name: "Slack Bot", icon: MessageSquare },
+    { name: "Firebase", icon: Flame },
+    { name: "Supabase", icon: Cpu },
+    { name: "Appwrite", icon: AppWindow },
+  ],
+
+  tools: [
+    { name: "Git", icon: GitBranch },
+    { name: "VS Code", icon: Terminal },
+    { name: "Figma", icon: PenTool },
+    { name: "Postman", icon: Send },
+    { name: "ESLint", icon: ScanLine },
+    { name: "Prettier", icon: WandSparkles },
+  ],
+
+  ai_tools: [
+    { name: "GitHub Copilot", icon: Bot },
+    { name: "ChatGPT", icon: Sparkles },
+  ],
+} as const satisfies Record<string, Skill[]>;
 
 export const featuredProjects: Project[] = [
   {
@@ -33,7 +109,7 @@ export const featuredProjects: Project[] = [
       year: "2026",
     },
     description:
-      "Internal job application and content management system built for a FullSuite. It allows applicants to submit their information easily while the company can manage content and showcase its culture, helping to create a strong employer brand for future employees.",
+      "Internal job application and content management system built for FullSuite. It functions as an assessment platform similar to TestGorilla integrated with the company's ATS and Suitelifer system, enabling applicants to complete evaluations while HR manages hiring workflows end-to-end.",
   },
   {
     badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Devops"],
@@ -57,7 +133,15 @@ export const featuredProjects: Project[] = [
       "This is a integrated API that replaces the old system they currently used and developed better and bug free API backend integrated with the main Suitelifer portal",
   },
   {
-    badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Appwrite", "Capstone Project"],
+    badge: [
+      "React",
+      "Tailwind",
+      "Express",
+      "Prisma",
+      "MySql",
+      "Appwrite",
+      "Capstone Project",
+    ],
     title: "Ticketing System for the Center for Culture and the Arts",
     images: [cca_landing],
     info: {
@@ -112,6 +196,7 @@ export const extraProjects: Project[] = [
       liveUrl: "https://techwonder.onrender.com/",
       githubUrl: "https://github.com/GiovanniL30/TechWonder",
     },
-    description: "Simple E-commerce website for viewing and adding items to the cart",
+    description:
+      "Simple E-commerce website for viewing and adding items to the cart",
   },
 ];

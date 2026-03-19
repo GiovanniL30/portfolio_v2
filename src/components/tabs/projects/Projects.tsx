@@ -10,7 +10,7 @@ const Projects = () => {
       <FeaturedProjects />
       <ExtraProjects />
       <a
-        className="w-full flex flex-1"
+        className="w-full flex flex-1 pb-15"
         href={personalGithubLink}
         target="_blank"
       >
