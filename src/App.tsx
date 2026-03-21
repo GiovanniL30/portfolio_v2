@@ -3,21 +3,27 @@ import RootLayout from "./layouts/RootLayout";
 import Explorer from "./pages/explorer/Explorer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Bot from "./pages/bot/Bot";
+import { Helmet } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<RootLayout />}>
-            <Route index element={<Explorer />} />
-            <Route path="bot" element={<Bot />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <>
+      <Helmet>
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<RootLayout />}>
+              <Route index element={<Explorer />} />
+              <Route path="bot" element={<Bot />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </>
   );
 };
 
