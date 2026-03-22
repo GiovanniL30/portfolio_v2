@@ -1,4 +1,4 @@
-import { ArrowRightIcon, GithubIcon, MailIcon } from "lucide-react";
+import { GithubIcon, MailIcon } from "lucide-react";
 import me from "../../../assets/images/me.jpg";
 import Button from "../../ui/Button";
 import type { ReactNode } from "react";
@@ -7,9 +7,7 @@ import Interests from "./Interests";
 import Me from "./Me";
 import Experience from "./Experience";
 import Certifications from "./Certifications";
-import { projectsTab } from "../../../data/fileSystem";
 import { personalGithubLink } from "../../../data/content";
-import { useEditorStore } from "../../../store/useEditorStore";
 
 type section = "About Me" | "Skills" | "Interests" | "Experience" | "Certifications";
 
@@ -31,8 +29,6 @@ const generateContent = (section: section): ReactNode => {
 };
 
 const About = () => {
-  const { setOpenTab } = useEditorStore();
-
   return (
     <div className="flex flex-col w-full justify-center items-center mt-5 max-w-150  mx-auto">
       <div className="flex flex-col w-full items-center">
@@ -76,12 +72,6 @@ const About = () => {
             </div>
           ))}
         </div>
-
-        <div className="h-0.5 gradient-divider my-3 w-full max-w-80 mx-auto mt-8 mb-5"></div>
-        <Button onClick={() => setOpenTab(projectsTab)} variant="icon" className="flex justify-center gap-2  items-center text-primary">
-          <p>View My Projects</p>
-          <ArrowRightIcon size={18} />
-        </Button>
       </div>
     </div>
   );

@@ -11,18 +11,11 @@ const categoryLabels: Record<SkillCategory, string> = {
 
 const Skills = () => {
   return (
-    <ScrollableContainer className="h-full w-full">
+    <ScrollableContainer scrollLeft={true} className="h-full w-full">
       <div className="p-4 space-y-6">
-        {(
-          Object.entries(skills) as [
-            SkillCategory,
-            (typeof skills)[SkillCategory],
-          ][]
-        ).map(([category, items]) => (
+        {(Object.entries(skills) as [SkillCategory, (typeof skills)[SkillCategory]][]).map(([category, items]) => (
           <div key={category}>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-text-muted">
-              {categoryLabels[category]}
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-text-muted">{categoryLabels[category]}</p>
 
             <div className="flex flex-wrap gap-2">
               {items.map(({ name, icon: Icon }) => (
