@@ -38,10 +38,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     const { activeFile } = get();
     set((s) => {
       const newTabs = s.openTabs.filter((tab) => tab.name !== file.name);
-      const newActive =
-        activeFile?.name === file.name
-          ? (newTabs[newTabs.length - 1] ?? null)
-          : s.activeFile;
+      const newActive = activeFile?.name === file.name ? (newTabs[newTabs.length - 1] ?? null) : s.activeFile;
       return { openTabs: newTabs, activeFile: newActive };
     });
   },
@@ -64,7 +61,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
 
 setTimeout(() => {
   useEditorStore.setState({
-    openTabs: [readMeTab, aboutTab, projectsTab],
-    activeFile: readMeTab,
+    openTabs: [aboutTab, readMeTab, projectsTab],
+    activeFile: aboutTab,
   });
 }, 0);

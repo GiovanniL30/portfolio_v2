@@ -6,7 +6,6 @@ const Explorer = () => {
     <>
       <Helmet>
         <title>Giovanni Leo | Web Developer in Baguio</title>
-
         <meta
           name="description"
           content="Giovanni Leo is a full stack web developer based in Baguio City, Philippines. in building modern, fast, and user-friendly websites."
