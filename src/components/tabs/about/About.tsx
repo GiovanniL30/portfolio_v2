@@ -47,6 +47,7 @@ const About = () => {
           src="/images/giovanni-leo.jpg"
           alt="Giovanni Leo — web developer Baguio"
           title="Giovanni Leo"
+          loading="eager"
         />
         <div className="w-full mt-15 flex flex-col gap-2">
           <div className="flex justify-between w-full">

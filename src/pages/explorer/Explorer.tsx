@@ -8,7 +8,7 @@ const Explorer = () => {
         <title>Giovanni Leo | Web Developer in Baguio</title>
         <meta
           name="description"
-          content="Giovanni Leo is a full stack web developer based in Baguio City, Philippines. in building modern, fast, and user-friendly websites."
+          content="Giovanni Leo is a full stack web developer based in Baguio City, Philippines, specializing in building modern, fast, and user-friendly websites."
         />
         <meta
           name="keywords"
@@ -25,7 +25,10 @@ const Explorer = () => {
           property="og:image"
           content="https://giovanni.upsertsolution.com/images/giovanni-leo.jpg"
         />
-        <meta property="og:image:alt" content="Giovanni Leo" />
+        <meta
+          property="og:image:alt"
+          content="Giovanni Leo full stack web developer from Baguio Philippines"
+        />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="800" />
 
