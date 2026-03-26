@@ -62,11 +62,13 @@ const About = () => {
                   <GithubIcon size={18} />
                 </Button>
               </a>
-              <a href="mailto:giovannileo100@gmail.com">
-                <Button variant="outline" className="p-2!">
-                  <MailIcon size={18} />
-                </Button>
-              </a>
+
+              <Button
+                onClick={() => window.open("/GiovanniLeo-Resume.pdf", "_blank")}
+                className="p-2! text-sm"
+              >
+                <p>View Resume</p>
+              </Button>
             </div>
           </div>
           <div className="flex items-center gap-2 text-text-muted">

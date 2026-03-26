@@ -20,8 +20,8 @@ const actionsList: ActionItem[] = [
     content: <Themes />,
   },
   {
-    name: "Download Resume",
-    handler: () => window.open("/resume.pdf", "_blank"),
+    name: "View Resume",
+    handler: () => window.open("/GiovanniLeo-Resume.pdf", "_blank"),
   },
 ];
 
