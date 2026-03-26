@@ -8,13 +8,16 @@
     <priority>1.0</priority>
 
     <image:image>
-      <image:loc>
-        https://giovanni.upsertsolution.com/images/giovanni-leo.jpg
-      </image:loc>
-      <image:title>Giovanni Leo Web Developer</image:title>
-      <image:caption>
-        Giovanni Leo full stack web developer from Baguio Philippines
-      </image:caption>
+      <image:loc>https://giovanni.upsertsolution.com/images/giovanni-leo-workspace.jpg</image:loc>
+      <image:title>Giovanni Leo Workspace</image:title>
+      <image:caption>Workspace setup used by Giovanni Leo for web development in Baguio City</image:caption>
     </image:image>
+
+    <image:image>
+      <image:loc>https://giovanni.upsertsolution.com/images/giovanni-leo.jpeg</image:loc>
+      <image:title>Giovanni Leo Web Developer</image:title>
+      <image:caption>Giovanni Leo full stack web developer from Baguio City Philippines</image:caption>
+    </image:image>
+
   </url>
 </urlset>

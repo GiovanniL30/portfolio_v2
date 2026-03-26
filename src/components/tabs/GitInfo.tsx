@@ -71,9 +71,13 @@ const GitInfo = () => {
       <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full">
         <img
           className="rounded-full w-24 h-24 sm:w-30 sm:h-30 object-cover border-3 border-primary"
-          src={userInfo?.avatar_url}
-          alt=""
+          src="/images/giovanni-leo-workspace.jpg"
+          alt="Workspace setup of Giovanni Leo, full stack web developer in Baguio City"
+          title="Giovanni Leo workspace"
+          loading="eager"
+          decoding="async"
         />
+
         <div className="flex flex-col gap-1 flex-1 items-center sm:items-start">
           <p className="text-xl sm:text-2xl font-semibold tracking-wide">
             {userInfo?.name}

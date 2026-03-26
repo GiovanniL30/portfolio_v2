@@ -44,11 +44,13 @@ const About = () => {
       <div className="flex flex-col w-full items-center">
         <img
           className="w-60 h-60 rounded-full object-cover border-2 border-primary drop-shadow-[0_0_6px_var(--brand-primary)]"
-          src="/images/giovanni-leo.jpg"
-          alt="Giovanni Leo — web developer Baguio"
+          src="/images/giovanni-leo.jpeg"
+          alt="Giovanni Leo — full stack web developer from Baguio City"
           title="Giovanni Leo"
           loading="eager"
+          decoding="async"
         />
+
         <div className="w-full mt-15 flex flex-col gap-2">
           <div className="flex justify-between w-full">
             <h1 className="text-4xl font-bold tracking-wide">

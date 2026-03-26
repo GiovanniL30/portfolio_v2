@@ -38,11 +38,16 @@ const Explorer = () => {
             "@type": "Person",
             name: "Giovanni Leo",
             url: "https://giovanni.upsertsolution.com",
-            image: {
-              "@type": "ImageObject",
-              url: "https://giovanni.upsertsolution.com/images/giovanni-leo.jpg",
-              caption: "Giovanni Leo",
-            },
+            image: [
+              "https://giovanni.upsertsolution.com/images/giovanni-leo.jpeg",
+              "https://giovanni.upsertsolution.com/images/giovanni-leo-workspace.jpg",
+            ],
+            sameAs: [
+              "https://github.com/GiovanniL30",
+              "https://www.linkedin.com/in/giovanni-leo-4774ab255",
+              "https://www.facebook.com/gi0.Leo",
+              "https://www.instagram.com/g.leo__",
+            ],
           })}
         </script>
       </Helmet>
