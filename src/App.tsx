@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import Explorer from "./pages/explorer/Explorer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Bot from "./pages/bot/Bot";
 import { Helmet } from "react-helmet-async";
 
 const queryClient = new QueryClient();
@@ -18,7 +17,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<RootLayout />}>
               <Route index element={<Explorer />} />
-              <Route path="bot" element={<Bot />} />
             </Route>
           </Routes>
         </BrowserRouter>

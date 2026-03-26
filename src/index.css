@@ -532,3 +532,13 @@ input::placeholder {
   background-color: var(--bg-surface-hover);
   font-weight: 600;
 }
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

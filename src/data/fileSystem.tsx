@@ -6,7 +6,7 @@ import CodeEditorReadme from "../components/tabs/codeEditor/CodeEditorReadme";
 import GitInfo from "../components/tabs/GitInfo";
 import Projects from "../components/tabs/projects/Projects";
 import Readme from "../components/tabs/Readme";
-import Bot from "../pages/bot/Bot";
+import Bot from "../components/bot/Bot";
 
 export const aboutTab: FileNode = {
   name: "about-me.tsx",

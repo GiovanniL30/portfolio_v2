@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { cleanPrompt } from "../../utils/string.utils";
 
@@ -22,7 +22,6 @@ const MessageBox = ({ sendMessage }: { sendMessage: (prompt: string) => void }) 
     };
 
     resize();
-
     ta.addEventListener("input", resize);
     return () => ta.removeEventListener("input", resize);
   }, []);
@@ -37,7 +36,7 @@ const MessageBox = ({ sendMessage }: { sendMessage: (prompt: string) => void }) 
     ta.style.maxHeight = `${MAX_HEIGHT}px`;
   }, [prompt]);
 
-  const handlePrompt = (e: React.ChangeEvent<HTMLTextAreaElement, HTMLTextAreaElement>) => {
+  const handlePrompt = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(e.target.value);
   };
 
@@ -54,28 +53,39 @@ const MessageBox = ({ sendMessage }: { sendMessage: (prompt: string) => void }) 
         e.preventDefault();
         handleSend();
       }}
-      className={`bg-text-muted/30 p-3 rounded-md w-full border ${isFocused ? "border-primary" : "border-transparent"}`}
+      className={`font-mono flex items-start gap-2 px-3 py-2 border-t ${
+        isFocused ? "border-primary" : "border-text-muted/30"
+      } transition-colors duration-150 bg-transparent`}
     >
+      {/* Prompt arrow */}
+      <span className="text-accent text-xs mt-1.5 shrink-0">{">"}</span>
+
       <textarea
         value={prompt}
         onChange={handlePrompt}
         ref={taRef}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        className="w-full resize-none focus:outline-none text-xs text-text-main/80 small-scroll"
-        placeholder="Enter your message here"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleSend();
+          }
+        }}
+        className="flex-1 resize-none focus:outline-none text-xs text-text-main/80 bg-transparent small-scroll placeholder:text-text-muted/50 leading-relaxed"
+        placeholder="ask something..."
         rows={1}
       />
 
-      <div className="flex w-full justify-end">
-        <button
-          type="submit"
-          disabled={!prompt.trim()}
-          className={`text-text-main/80 ${!prompt.trim() ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
-        >
-          <ArrowUpIcon size={15} />
-        </button>
-      </div>
+      <button
+        type="submit"
+        disabled={!prompt.trim()}
+        className={`mt-1 shrink-0 text-accent transition-opacity duration-150 ${
+          !prompt.trim() ? "opacity-20 cursor-not-allowed" : "cursor-pointer hover:text-primary"
+        }`}
+      >
+        <ArrowRightIcon size={14} />
+      </button>
     </form>
   );
 };

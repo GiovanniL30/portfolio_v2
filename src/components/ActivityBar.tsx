@@ -1,5 +1,5 @@
 import { cloneElement } from "react";
-import { BotIcon, FileIcon, Settings } from "lucide-react";
+import { FileIcon, Settings } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useActionBarStore } from "../store/useActionBarStore";
 
@@ -8,11 +8,6 @@ const items = [
     icon: <FileIcon />,
     path: "/",
     onHoverText: "Explorer",
-  },
-  {
-    icon: <BotIcon />,
-    path: "/bot",
-    onHoverText: "Chat Bot",
   },
 ];
 
@@ -24,9 +19,7 @@ const ActivityBar = () => {
       <div className="flex flex-col gap-5">
         {items.map((item, index) => (
           <NavLink
-            className={({ isActive }) =>
-              `relative border-l-2 ${isActive ? "border-l-primary" : "border-l-transparent"}`
-            }
+            className={({ isActive }) => `relative border-l-2 ${isActive ? "border-l-primary" : "border-l-transparent"}`}
             to={item.path}
             key={index}
             end={true}
@@ -44,15 +37,11 @@ const ActivityBar = () => {
             )}
           </NavLink>
         ))}
-      </div>
-
-      <div>
-        <button className="cursor-pointer" onClick={toggle}>
-          <Settings
-            size={23}
-            className="m-3 text-text-muted/90 hover:text-text-main ease-linear transition-all"
-          />
-        </button>
+        <div>
+          <button className="cursor-pointer" onClick={toggle}>
+            <Settings size={23} className="m-3 text-text-muted/90 hover:text-text-main ease-linear transition-all" />
+          </button>
+        </div>
       </div>
     </div>
   );
