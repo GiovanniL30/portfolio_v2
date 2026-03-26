@@ -1,78 +1,43 @@
 import ScrollableContainer from "../containers/ScrollableContainer";
-import {
-  aboutTab,
-  codeEditorTab,
-  contactTab,
-  gitInfoTab,
-  projectsTab,
-} from "../../data/fileSystem";
+import { aboutTab, codeEditorTab, contactTab, gitInfoTab, projectsTab } from "../../data/fileSystem";
 import { useEditorStore } from "../../store/useEditorStore";
-import { useNavigate } from "react-router-dom";
 
 const Readme = () => {
   const { setOpenTab } = useEditorStore();
-  const navigate = useNavigate();
 
   return (
     <div className="mx-auto p-6 max-w-200">
-      <h1 className="text-3xl font-bold mb-2">
-        👋 Hello I am Giovanni M. Leo!
-      </h1>
+      <h1 className="text-3xl font-bold mb-2">👋 Hello I am Giovanni M. Leo!</h1>
       <p className="mb-4 text-text-muted">
-        This portfolio is a living canvas of my journey as a developer,
-        designer, and creator. Inspired by the best of modern developer
-        portfolios and built with love, every pixel and line of code here
-        reflects my passion for technology and creativity.
+        This portfolio is a living canvas of my journey as a developer, designer, and creator. Inspired by the best of modern developer portfolios and
+        built with love, every pixel and line of code here reflects my passion for technology and creativity.
       </p>
 
       <h3 className="text-lg font-medium mt-6 mb-2">Quick Links</h3>
       <ScrollableContainer className="mt-2">
         <ul className="list-disc list-inside ml-4 text-primary">
           <li>
-            <button
-              className="text-primary hover:underline"
-              onClick={() => setOpenTab(aboutTab)}
-            >
+            <button className="text-primary hover:underline" onClick={() => setOpenTab(aboutTab)}>
               About Me
             </button>
           </li>
           <li>
-            <button
-              className="text-primary hover:underline"
-              onClick={() => setOpenTab(projectsTab)}
-            >
+            <button className="text-primary hover:underline" onClick={() => setOpenTab(projectsTab)}>
               Projects
             </button>
           </li>
           <li>
-            <button
-              className="text-primary hover:underline"
-              onClick={() => setOpenTab(gitInfoTab)}
-            >
+            <button className="text-primary hover:underline" onClick={() => setOpenTab(gitInfoTab)}>
               Git Info
             </button>
           </li>
           <li>
-            <button
-              className="text-primary hover:underline"
-              onClick={() => setOpenTab(codeEditorTab)}
-            >
+            <button className="text-primary hover:underline" onClick={() => setOpenTab(codeEditorTab)}>
               Tagalog Code Editor
             </button>
           </li>
           <li>
-            <button
-              className="text-primary hover:underline"
-              onClick={() => navigate("/bot")}
-            >
-              Bot
-            </button>
-          </li>
-          <li>
-            <button
-              className="text-primary hover:underline"
-              onClick={() => setOpenTab(contactTab)}
-            >
+            <button className="text-primary hover:underline" onClick={() => setOpenTab(contactTab)}>
               Contact
             </button>
           </li>
@@ -81,10 +46,8 @@ const Readme = () => {
 
       <h2 className="text-2xl font-semibold mt-6 mb-2">✨ Inspiration</h2>
       <p className="mb-4 text-text-muted">
-        My portfolio draws inspiration from the vibrant open-source community,
-        the elegance of VS Code, and the creativity of countless developers who
-        share their work online. I believe in learning from others, remixing
-        great ideas, and always striving to make something uniquely my own.
+        My portfolio draws inspiration from the vibrant open-source community, the elegance of VS Code, and the creativity of countless developers who
+        share their work online. I believe in learning from others, remixing great ideas, and always striving to make something uniquely my own.
       </p>
       <h2 className="text-2xl font-semibold mt-6 mb-2">🛠️ Built With</h2>
       <ul className="list-disc ml-6 mb-4 text-text-muted">
@@ -99,46 +62,33 @@ const Readme = () => {
         <li>Modern, VS Code-inspired UI</li>
         <li>Responsive and accessible design</li>
         <li>
-          <span className="text-text-primary font-medium">
-            Wikang code editor
-          </span>
-          {" — "}Monaco-powered editor with Tagalog syntax highlighting and
-          autocomplete
+          <span className="text-text-primary font-medium">Wikang code editor</span>
+          {" — "}Monaco-powered editor with Tagalog syntax highlighting and autocomplete
         </li>
         <li>
-          <span className="text-text-primary font-medium">
-            Compiler & runner
-          </span>
-          {" — "}Compiles Tagalog to JavaScript and executes it in a sandboxed
-          iframe
+          <span className="text-text-primary font-medium">Compiler & runner</span>
+          {" — "}Compiles Tagalog to JavaScript and executes it in a sandboxed iframe
         </li>
         <li>
           <span className="text-text-primary font-medium">Output terminal</span>
-          {" — "}Live output panel that captures{" "}
-          <code className="text-primary">ilabas()</code> calls and runtime
-          errors
+          {" — "}Live output panel that captures <code className="text-primary">ilabas()</code> calls and runtime errors
         </li>
         <li>
           <span className="text-text-primary font-medium">Input terminal</span>
-          {" — "}Interactive shell with command history, arrow-key navigation,
-          and extensible command registry
+          {" — "}Interactive shell with command history, arrow-key navigation, and extensible command registry
         </li>
         <li>Interactive and dynamic content</li>
       </ul>
       <h2 className="text-2xl font-semibold mt-6 mb-2">💡 Philosophy</h2>
       <p className="mb-4 text-text-muted">
-        I believe a portfolio should be more than a resume—it should be a
-        playground for ideas, a showcase of growth, and a place to connect. This
+        I believe a portfolio should be more than a resume—it should be a playground for ideas, a showcase of growth, and a place to connect. This
         site is always evolving, just like me.
       </p>
       <h2 className="text-2xl font-semibold mt-6 mb-2">🌐 Connect</h2>
       <p className="text-text-muted">
-        If you like what you see or want to collaborate, feel free to reach out!
-        My contact info and links are just a click away.
+        If you like what you see or want to collaborate, feel free to reach out! My contact info and links are just a click away.
       </p>
-      <p className="mt-8 text-sm text-text-muted">
-        Made with love, inspiration, and a lot of curiosity. — Giovanni M. Leo
-      </p>
+      <p className="mt-8 text-sm text-text-muted">Made with love, inspiration, and a lot of curiosity. — Giovanni M. Leo</p>
     </div>
   );
 };
