@@ -1,14 +1,11 @@
-import { Menu, Terminal, X, Bot, Settings2, FolderOpen } from "lucide-react";
+import { Menu, Terminal, X, Settings2, FolderOpen } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import FileTree from "./fileTree/FileTree";
 import { useTerminalStore } from "../store/useTerminalStore";
-import { useEditorStore } from "../store/useEditorStore";
-import { botTab } from "../data/fileSystem";
 import { useActionBarStore } from "../store/useActionBarStore";
 
 const HamburgerMenu = () => {
   const { open } = useActionBarStore();
-  const { setOpenTab } = useEditorStore();
   const { setIsTerminalOpen } = useTerminalStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -34,7 +31,7 @@ const HamburgerMenu = () => {
       </button>
 
       {isMenuOpen && (
-        <div className="absolute top-full right-0 mt-2 w-64 z-[9999] rounded-md border border-text-muted/20 bg-base shadow-xl overflow-hidden">
+        <div className="absolute top-full right-0 mt-2 w-64 z-9999 rounded-md border border-text-muted/20 bg-base shadow-xl overflow-hidden">
           {/* File Tree Section */}
           <div className="px-3 pt-3 pb-2">
             <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-text-muted mb-2">
@@ -61,16 +58,6 @@ const HamburgerMenu = () => {
             >
               <Terminal size={14} />
               Open Terminal
-            </button>
-            <button
-              className={actionBtn}
-              onClick={() => {
-                setOpenTab(botTab);
-                setIsMenuOpen(false);
-              }}
-            >
-              <Bot size={14} />
-              Open Bot
             </button>
             <button
               className={actionBtn}
