@@ -7,6 +7,40 @@ const Experience = () => {
   return (
     <div className="flex flex-col gap-3">
       <CardContainer>
+        <Tag>Feb 2026 - Present</Tag>
+        <div className="mt-5 flex flex-col gap-1">
+          <p>Founder & Lead Software Engineer</p>
+
+          <p className="text-sm text-text-muted">Startup</p>
+
+          <div className="flex gap-2 text-text-muted text-sm">
+            <p>Upsertsolution</p>
+            <p>/</p>
+            <p>Remote</p>
+          </div>
+        </div>
+
+        <ul className="list-disc pl-5 mt-4 text-text-muted text-sm flex flex-col gap-2 marker:text-accent">
+          <li>
+            Architected the startup's core infrastructure, landing page, and
+            integrated blog platform using{" "}
+            <TextToken variant="keyword">Next.js</TextToken>,{" "}
+            <TextToken variant="keyword">Node.js</TextToken>, and a SQL
+            database.
+          </li>
+          <li>
+            Engineered an extensible admin portal with role-based access
+            control, seamlessly connecting to backend services to streamline
+            operations.
+          </li>
+          <li>
+            Designed a scalable backend architecture and database schema focused
+            on high performance and maintainability to support planned user
+            growth.
+          </li>
+        </ul>
+      </CardContainer>
+      <CardContainer>
         <Tag>Present</Tag>
         <div className="mt-5 flex flex-col gap-1">
           <p>Software Engineer Associate</p>

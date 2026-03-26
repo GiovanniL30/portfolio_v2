@@ -4,12 +4,17 @@ const Me = () => {
   return (
     <div className="flex flex-col gap-5 text-text-muted">
       <p>
-        Hi! I'm Giovanni, a passionate <TextToken variant="keyword">full stack web developer</TextToken> who loves building clean, modern, and
-        user-friendly applications. I enjoy turning ideas into reality with code and thrive on solving real-world problems with technology.
+        Hi! I'm Giovanni Leo, a{" "}
+        <TextToken variant="keyword">Software Engineer</TextToken> and startup
+        founder with a strong foundation in designing scalable system
+        architectures and web infrastructure. I love balancing high-level system
+        design with hands-on coding to turn complex business needs into reality.
       </p>
       <p>
-        You'll find me exploring new tech, learning about design, or collaborating with others on creative projects. I'm always eager to grow, share
-        knowledge, and make a positive impact through my work.
+        Whether I'm architecting a backend, deploying to the cloud, or leading a
+        development team, I thrive on driving projects from concept to
+        deployment. I'm always eager to explore modern tech, collaborate on
+        creative solutions, and make a real-world impact through my code.
       </p>
     </div>
   );
