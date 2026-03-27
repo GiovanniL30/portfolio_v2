@@ -1,4 +1,3 @@
-import logo from "../../assets/icons/vscode.png";
 import { useTerminalStore } from "../../store/useTerminalStore";
 import Button from "../ui/Button";
 
@@ -9,7 +8,7 @@ const VsControl = () => {
   return (
     <div className="md:w-full flex justify-start w-fit">
       <div className="flex items-center gap-2.5">
-        <img className="w-4 h-4 " src={logo} alt="" />
+        <img className="w-4 h-4 " src={"/favicon.ico"} alt="" />
         {controls.map((control) => (
           <Button
             onClick={() => {
