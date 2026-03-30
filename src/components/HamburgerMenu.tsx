@@ -1,11 +1,21 @@
-import { Menu, Terminal, X, Settings2, FolderOpen } from "lucide-react";
+import {
+  Menu,
+  Terminal,
+  X,
+  Settings2,
+  FolderOpen,
+  Contact,
+} from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import FileTree from "./fileTree/FileTree";
 import { useTerminalStore } from "../store/useTerminalStore";
 import { useActionBarStore } from "../store/useActionBarStore";
+import { useEditorStore } from "../store/useEditorStore";
+import { contactTab } from "../data/fileSystem";
 
 const HamburgerMenu = () => {
   const { open } = useActionBarStore();
+  const { setOpenTab } = useEditorStore();
   const { setIsTerminalOpen } = useTerminalStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -26,7 +36,10 @@ const HamburgerMenu = () => {
 
   return (
     <div className="relative" ref={menuRef}>
-      <button className="flex items-center" onClick={() => setIsMenuOpen((prev) => !prev)}>
+      <button
+        className="flex items-center"
+        onClick={() => setIsMenuOpen((prev) => !prev)}
+      >
         {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
@@ -48,7 +61,9 @@ const HamburgerMenu = () => {
 
           {/* Actions Section */}
           <div className="px-2 py-2 flex flex-col gap-0.5">
-            <div className="text-xs font-semibold uppercase tracking-wider text-text-muted px-2 mb-1">Actions</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-text-muted px-2 mb-1">
+              Actions
+            </div>
             <button
               className={actionBtn}
               onClick={() => {
@@ -58,6 +73,16 @@ const HamburgerMenu = () => {
             >
               <Terminal size={14} />
               Open Terminal
+            </button>
+            <button
+              className={actionBtn}
+              onClick={() => {
+                setOpenTab(contactTab);
+                setIsMenuOpen(false);
+              }}
+            >
+              <Contact size={14} />
+              Contact
             </button>
             <button
               className={actionBtn}

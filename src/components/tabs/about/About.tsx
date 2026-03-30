@@ -7,6 +7,8 @@ import Me from "./Me";
 import Experience from "./Experience";
 import Certifications from "./Certifications";
 import { personalGithubLink } from "../../../data/content";
+import { useEditorStore } from "../../../store/useEditorStore";
+import { contactTab } from "../../../data/fileSystem";
 
 type section =
   | "About Me"
@@ -39,6 +41,8 @@ const generateContent = (section: section): ReactNode => {
 };
 
 const About = () => {
+  const { setOpenTab } = useEditorStore();
+
   return (
     <div className="flex flex-col w-full justify-center items-center mt-5 max-w-150  mx-auto">
       <div className="flex flex-col w-full items-center">
@@ -52,7 +56,7 @@ const About = () => {
         />
 
         <div className="w-full mt-15 flex flex-col gap-2">
-          <div className="flex justify-between w-full">
+          <div className="flex gap-2 justify-between w-full">
             <h1 className="text-4xl font-bold tracking-wide">
               Giovanni M. Leo
             </h1>
@@ -65,7 +69,7 @@ const About = () => {
 
               <Button
                 onClick={() => window.open("/GiovanniLeo-Resume.pdf", "_blank")}
-                className="p-2! text-sm"
+                className="p-2! text-sm text-nowrap"
               >
                 <p>View Resume</p>
               </Button>
@@ -97,6 +101,12 @@ const About = () => {
               </div>
             </div>
           ))}
+          <Button
+            onClick={() => setOpenTab(contactTab)}
+            className="w-full my-5"
+          >
+            Send a Message
+          </Button>
         </div>
       </div>
     </div>

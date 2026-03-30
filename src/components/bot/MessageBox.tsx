@@ -4,7 +4,13 @@ import { cleanPrompt } from "../../utils/string.utils";
 
 const MAX_HEIGHT = 200;
 
-const MessageBox = ({ sendMessage }: { sendMessage: (prompt: string) => void }) => {
+const MessageBox = ({
+  sendMessage,
+  messageLoading,
+}: {
+  sendMessage: (prompt: string) => void;
+  messageLoading: boolean;
+}) => {
   const taRef = useRef<HTMLTextAreaElement | null>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -41,6 +47,8 @@ const MessageBox = ({ sendMessage }: { sendMessage: (prompt: string) => void }) 
   };
 
   const handleSend = () => {
+    if (messageLoading) return;
+
     const cleaned = cleanPrompt(prompt);
     if (!cleaned) return;
     sendMessage(cleaned);
@@ -72,16 +80,19 @@ const MessageBox = ({ sendMessage }: { sendMessage: (prompt: string) => void }) 
             handleSend();
           }
         }}
-        className="flex-1 resize-none focus:outline-none text-xs text-text-main/80 bg-transparent small-scroll placeholder:text-text-muted/50 leading-relaxed"
+        disabled={messageLoading}
+        className="flex-1 resize-none focus:outline-none text-xs text-text-main/80 bg-transparent small-scroll placeholder:text-text-muted/50 leading-relaxed disabled:opacity-40 disabled:cursor-not-allowed" // ✅ added disabled styles
         placeholder="ask something..."
         rows={1}
       />
 
       <button
         type="submit"
-        disabled={!prompt.trim()}
+        disabled={!prompt.trim() || messageLoading}
         className={`mt-1 shrink-0 text-accent transition-opacity duration-150 ${
-          !prompt.trim() ? "opacity-20 cursor-not-allowed" : "cursor-pointer hover:text-primary"
+          !prompt.trim() || messageLoading
+            ? "opacity-20 cursor-not-allowed"
+            : "cursor-pointer hover:text-primary"
         }`}
       >
         <ArrowRightIcon size={14} />

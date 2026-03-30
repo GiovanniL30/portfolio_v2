@@ -7,6 +7,9 @@ import { buildMonacoTheme } from "../../../utils/ui.utils";
 import { useEffect, useRef } from "react";
 import type { Keyword } from "../../../@types/compiler";
 import { useCodeEditorStore } from "../../../store/useCodeEditorStore";
+import Button from "../../ui/Button";
+import { useTerminalStore } from "../../../store/useTerminalStore";
+import { useCompileSourceCode } from "../../../_api/compiler.api";
 
 const THEME_NAME = "wikang-theme";
 
@@ -135,7 +138,11 @@ const registerWikang = (monaco: Monaco) => {
 };
 
 const CodeEditor = () => {
-  const { sourceCode, setSourceCode } = useCodeEditorStore();
+  const compileMutation = useCompileSourceCode();
+  const { sourceCode, setSourceCode, setCompiledSourceCode } =
+    useCodeEditorStore();
+  const { setIsTerminalOpen, setActiveTab } = useTerminalStore();
+  const pendingClear = useRef(false); // ✅ add this
 
   const editorRef = useRef<Parameters<OnMount>[0] | null>(null);
   const monacoRef = useRef<Monaco | null>(null);
@@ -184,28 +191,59 @@ const CodeEditor = () => {
     });
   };
 
+  const compile = () => {
+    setActiveTab("OUTPUT");
+    setIsTerminalOpen(true);
+
+    compileMutation.mutate(
+      { sourceCode },
+      {
+        onSuccess: (data) => {
+          pendingClear.current = true;
+          setCompiledSourceCode(data.compiled);
+        },
+        onError: () => {
+          setActiveTab("OUTPUT");
+          setIsTerminalOpen(true);
+        },
+      },
+    );
+  };
+
   return (
-    <Editor
-      loading={"Loading…"}
-      className="-ml-2"
-      defaultLanguage="plaintext"
-      defaultValue={sourceCode}
-      value={sourceCode}
-      onChange={(e) => setSourceCode(e ?? "")}
-      beforeMount={handleBeforeMount}
-      onMount={handleMount}
-      options={{
-        fontSize: 14,
-        fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-        fontLigatures: true,
-        minimap: { enabled: false },
-        scrollBeyondLastLine: false,
-        lineNumbers: "on",
-        renderLineHighlight: "line",
-        padding: { top: 16 },
-        tabSize: 2,
-      }}
-    />
+    <div className="w-full h-full">
+      <div className="w-full flex justify-between mb-2">
+        <p>Tagalog Code Editor</p>
+        <Button
+          onClick={compile}
+          disabled={compileMutation.isPending}
+          className="text-xs px-5! py-2!"
+        >
+          {compileMutation.isPending ? "Compiling…" : "▶ Run"}
+        </Button>
+      </div>
+      <Editor
+        loading={"Loading…"}
+        className="-ml-2"
+        defaultLanguage="plaintext"
+        defaultValue={sourceCode}
+        value={sourceCode}
+        onChange={(e) => setSourceCode(e ?? "")}
+        beforeMount={handleBeforeMount}
+        onMount={handleMount}
+        options={{
+          fontSize: 14,
+          fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+          fontLigatures: true,
+          minimap: { enabled: false },
+          scrollBeyondLastLine: false,
+          lineNumbers: "on",
+          renderLineHighlight: "line",
+          padding: { top: 16 },
+          tabSize: 2,
+        }}
+      />
+    </div>
   );
 };
 

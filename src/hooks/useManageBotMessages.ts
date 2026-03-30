@@ -35,11 +35,31 @@ const useManageBotMessages = () => {
       { prompt },
       {
         onSuccess: (data) => {
-          setMessages((prev) => prev.map((m) => (m.id === botId ? { ...m, message: data.message, messageAt: new Date(), isPending: false } : m)));
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === botId
+                ? {
+                    ...m,
+                    message: data.message,
+                    messageAt: new Date(),
+                    isPending: false,
+                  }
+                : m,
+            ),
+          );
         },
         onError: (err) => {
           setMessages((prev) =>
-            prev.map((m) => (m.id === botId ? { ...m, message: err?.message ?? "Request failed", messageAt: new Date(), isPending: false } : m)),
+            prev.map((m) =>
+              m.id === botId
+                ? {
+                    ...m,
+                    message: err?.message ?? "Request failed",
+                    messageAt: new Date(),
+                    isPending: false,
+                  }
+                : m,
+            ),
           );
           console.error(err);
         },
@@ -47,7 +67,7 @@ const useManageBotMessages = () => {
     );
   };
 
-  return { sendMessage, messages };
+  return { sendMessage, messages, messageLoading: sendMutation.isPending };
 };
 
 export default useManageBotMessages;

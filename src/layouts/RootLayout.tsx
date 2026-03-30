@@ -9,7 +9,7 @@ import { useTerminalStore } from "../store/useTerminalStore";
 import { useIsMobile } from "../hooks/useIsMobile";
 import Footer from "../components/Footer";
 import Button from "../components/ui/Button";
-import { MessageCircle, X } from "lucide-react";
+import { MessageSquare, X } from "lucide-react";
 import Bot from "../components/bot/Bot";
 
 const RootLayout = () => {
@@ -78,23 +78,45 @@ const RootLayout = () => {
               <MainContent />
             </Panel>
             <Separator className="h-0.5 border-t border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
-            <Panel panelRef={terminalRef} className="flex-1 min-h-0 overflow-hidden!" defaultSize={0} collapsible collapsedSize={5} minSize={150}>
+            <Panel
+              panelRef={terminalRef}
+              className="flex-1 min-h-0 overflow-hidden!"
+              defaultSize={0}
+              collapsible
+              collapsedSize={5}
+              minSize={150}
+            >
               <MainTerminal />
             </Panel>
           </Group>
         ) : (
           <Group orientation="horizontal">
-            <Panel collapsible collapsedSize={5} minSize={150} defaultSize={250}>
+            <Panel
+              collapsible
+              collapsedSize={5}
+              minSize={150}
+              defaultSize={250}
+            >
               <Outlet />
             </Panel>
             <Separator className="w-.5 border-l border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
             <Panel minSize={200} className="flex-1 min-h-0">
               <Group orientation="vertical">
-                <Panel minSize={200} className="flex-1 min-h-0 overflow-hidden!">
+                <Panel
+                  minSize={200}
+                  className="flex-1 min-h-0 overflow-hidden!"
+                >
                   <MainContent />
                 </Panel>
                 <Separator className="h-0.5 border-t border-text-muted/50 hover:border-primary transition-colors cursor-col-resize" />
-                <Panel panelRef={terminalRef} className="flex-1 min-h-0 overflow-hidden!" defaultSize={0} collapsible collapsedSize={5} minSize={150}>
+                <Panel
+                  panelRef={terminalRef}
+                  className="flex-1 min-h-0 overflow-hidden!"
+                  defaultSize={0}
+                  collapsible
+                  collapsedSize={5}
+                  minSize={200}
+                >
                   <MainTerminal />
                 </Panel>
               </Group>
@@ -107,7 +129,9 @@ const RootLayout = () => {
       {/* Bot panel */}
       <div
         className={`fixed bottom-24 right-5 z-9999 transition-all duration-300 ease-out origin-bottom-right ${
-          botOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+          botOpen
+            ? "opacity-100 scale-100 pointer-events-auto"
+            : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
         <Bot />
@@ -115,8 +139,10 @@ const RootLayout = () => {
 
       {/* Nudge bubble */}
       <div
-        className={`fixed bottom-25 right-5 z-50 transition-all duration-300 ease-out ${
-          nudgeVisible && !botOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
+        className={`fixed bottom-28 right-6 z-50 transition-all duration-300 ease-out ${
+          nudgeVisible && !botOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       >
         <div
@@ -138,8 +164,11 @@ const RootLayout = () => {
       </div>
 
       {/* Chat toggle button */}
-      <Button className="fixed bottom-12 right-5 rounded-full! p-2! bg-primary z-50" onClick={handleOpenBot}>
-        {botOpen ? <X size={20} /> : <MessageCircle size={20} />}
+      <Button
+        className="fixed bottom-12 right-5 rounded-full! p-3! bg-primary z-50"
+        onClick={handleOpenBot}
+      >
+        {botOpen ? <X size={20} /> : <MessageSquare size={22} />}
       </Button>
     </div>
   );

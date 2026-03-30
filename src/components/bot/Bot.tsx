@@ -4,12 +4,14 @@ import MessageBox from "./MessageBox";
 import Messages from "./Messages";
 
 const Bot = () => {
-  const { sendMessage, messages } = useManageBotMessages();
+  const { sendMessage, messages, messageLoading } = useManageBotMessages();
 
   return (
     <>
       <div className="bg-surface p-2">
-        <p className="text-xs text-text-muted uppercase tracking-wide text-center">Giovanni Assistant</p>
+        <p className="text-xs text-text-muted uppercase tracking-wide text-center">
+          Giovanni Assistant
+        </p>
       </div>
       <div className="h-full overflow-y-auto bg-surface/60 backdrop-blur-md p-2 flex flex-col max-w-80 md:max-w-100">
         {messages.length == 0 ? (
@@ -23,7 +25,10 @@ const Bot = () => {
         )}
 
         <div className="mt-auto">
-          <MessageBox sendMessage={sendMessage} />
+          <MessageBox
+            sendMessage={sendMessage}
+            messageLoading={messageLoading}
+          />
         </div>
       </div>
     </>

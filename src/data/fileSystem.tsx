@@ -37,8 +37,8 @@ export const gitInfoTab: FileNode = {
 };
 
 export const contactTab: FileNode = {
-  name: "contact.json",
-  path: "src/about/contact.json",
+  name: "contact.tsx",
+  path: "src/about/contact.tsx",
   type: "file",
   content: () => <Contact />,
 };
