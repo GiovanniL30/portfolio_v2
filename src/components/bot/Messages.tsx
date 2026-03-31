@@ -44,7 +44,9 @@ const MessageBlock = ({ message }: { message: Message }) => {
         <>
           <div className="flex items-start gap-2 text-xs text-accent max-w-full">
             <span className="shrink-0 mt-px">{">"}</span>
-            <span className="text-accent/80 leading-relaxed wrap-break-word overflow-hidden min-w-0">{message.message}</span>
+            <span className="text-accent/80 leading-relaxed wrap-break-word overflow-hidden min-w-0">
+              {message.message}
+            </span>
           </div>
           <div className="text-text-muted text-xs pl-4">{messageTime}</div>
         </>
@@ -66,7 +68,7 @@ const MessageContent = ({ message }: { message: Message }) => {
 
     if (isPending) {
       schedule(() => {
-        setDisplay("_");
+        setDisplay("bot is thinking...");
 
         indexRef.current = 0;
         typedRef.current = false;
@@ -86,7 +88,10 @@ const MessageContent = ({ message }: { message: Message }) => {
     schedule(() => setDisplay(""));
 
     indexRef.current = 0;
-    const speed = Math.max(8, 24 - Math.min(12, Math.floor(fullMessage.length / 50)) * 2);
+    const speed = Math.max(
+      8,
+      24 - Math.min(12, Math.floor(fullMessage.length / 50)) * 2,
+    );
     intervalRef.current = window.setInterval(() => {
       indexRef.current += 1;
       setDisplay(fullMessage.slice(0, indexRef.current));
