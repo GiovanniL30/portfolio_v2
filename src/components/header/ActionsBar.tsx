@@ -21,7 +21,7 @@ const actionsList: ActionItem[] = [
   },
   {
     name: "View Resume",
-    handler: () => window.open("/GiovanniLeo-Resume.pdf", "_blank"),
+    handler: () => window.open("/GiovanniLeo-Resume-v2.pdf", "_blank"),
   },
 ];
 
