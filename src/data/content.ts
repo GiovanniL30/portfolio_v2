@@ -1,5 +1,5 @@
 import type { Project } from "../@types/fileSystem";
-import suitliferImage from "../assets/images/suitelifer.png";
+// import suitliferImage from "../assets/images/suitelifer.png";
 import cca_landing from "../assets/images/cca_landing.png";
 import ptV1 from "../assets/images/portfolio_v1.png";
 import aeiluminate from "../assets/images/aeiluminate.webp";
@@ -101,37 +101,37 @@ export const skills = {
 } as const satisfies Record<string, Skill[]>;
 
 export const featuredProjects: Project[] = [
-  {
-    badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Devops"],
+  // {
+  //   badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Devops"],
 
-    title: "Tseksuite - Test Management System",
-    info: {
-      year: "2026",
-    },
-    description:
-      "Internal job application and content management system built for FullSuite. It functions as an assessment platform similar to TestGorilla integrated with the company's ATS and Suitelifer system, enabling applicants to complete evaluations while HR manages hiring workflows end-to-end.",
-  },
-  {
-    badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Devops"],
-    images: [suitliferImage],
-    title: "Suitelifer",
-    info: {
-      year: "2026",
-      liveUrl: "https://www.suitelifer.com/",
-    },
-    description:
-      "Internal job application and content management system built for a FullSuite. It allows applicants to submit their information easily while the company can manage content and showcase its culture, helping to create a strong employer brand for future employees.",
-  },
-  {
-    badge: ["API", "Prisma ORM", "Express JS", "Postman"],
-    title: "Employee Request Filing Portal API",
-    info: {
-      year: "2026",
-      liveUrl: "https://forked-suitelifer-filing-server.vercel.app/",
-    },
-    description:
-      "This is a integrated API that replaces the old system they currently used and developed better and bug free API backend integrated with the main Suitelifer portal",
-  },
+  //   title: "Tseksuite - Test Management System",
+  //   info: {
+  //     year: "2026",
+  //   },
+  //   description:
+  //     "Internal job application and content management system built for FullSuite. It functions as an assessment platform similar to TestGorilla integrated with the company's ATS and Suitelifer system, enabling applicants to complete evaluations while HR manages hiring workflows end-to-end.",
+  // },
+  // {
+  //   badge: ["React", "Tailwind", "Express", "Prisma", "MySql", "Devops"],
+  //   images: [suitliferImage],
+  //   title: "Suitelifer",
+  //   info: {
+  //     year: "2026",
+  //     liveUrl: "https://www.suitelifer.com/",
+  //   },
+  //   description:
+  //     "Internal job application and content management system built for a FullSuite. It allows applicants to submit their information easily while the company can manage content and showcase its culture, helping to create a strong employer brand for future employees.",
+  // },
+  // {
+  //   badge: ["API", "Prisma ORM", "Express JS", "Postman"],
+  //   title: "Employee Request Filing Portal API",
+  //   info: {
+  //     year: "2026",
+  //     liveUrl: "https://forked-suitelifer-filing-server.vercel.app/",
+  //   },
+  //   description:
+  //     "This is a integrated API that replaces the old system they currently used and developed better and bug free API backend integrated with the main Suitelifer portal",
+  // },
   {
     badge: [
       "React",
