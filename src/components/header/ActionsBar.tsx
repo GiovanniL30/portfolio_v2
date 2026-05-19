@@ -1,10 +1,4 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  type ReactNode,
-} from "react";
+import { useState, useRef, useEffect, useCallback, type ReactNode } from "react";
 import Themes from "./Themes";
 import { useActionBarStore } from "../../store/useActionBarStore";
 
@@ -21,7 +15,7 @@ const actionsList: ActionItem[] = [
   },
   {
     name: "View Resume",
-    handler: () => window.open("/GiovanniLeo-Resume-v2.pdf", "_blank"),
+    handler: () => window.open("/Leo - Resume.pdf", "_blank"),
   },
 ];
 
@@ -50,10 +44,7 @@ const ActionsBar = () => {
     if (!isOpen) return;
 
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(event.target as Node)
-      ) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
         closeAll();
       }
     };
@@ -62,17 +53,12 @@ const ActionsBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen, closeAll]);
 
-  const filteredActions = actionsList.filter((a) =>
-    a.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filteredActions = actionsList.filter((a) => a.name.toLowerCase().includes(search.toLowerCase()));
 
   const showTabs = isOpen && !openAction;
 
   return (
-    <div
-      className="relative w-full max-w-100 flex justify-center mx-auto"
-      ref={wrapperRef}
-    >
+    <div className="relative w-full max-w-100 flex justify-center mx-auto" ref={wrapperRef}>
       {!isOpen || openAction ? (
         <button
           className="bg-surface py-1.5 w-full flex justify-center border border-text-muted/70 rounded-lg text-xs font-light cursor-pointer hover:bg-surface-hover"
@@ -121,13 +107,8 @@ const ActionsBar = () => {
       {openAction?.content && (
         <div className="absolute left-0 right-0 top-full mt-1 z-[9999999] bg-surface border border-text-muted/70 rounded-lg shadow-lg p-4 text-xs">
           <div className="flex justify-between items-center mb-2">
-            <span className="font-semibold text-text-main">
-              {openAction.name}
-            </span>
-            <button
-              className="text-text-muted hover:text-text-main transition-colors text-xs cursor-pointer"
-              onClick={closeAll}
-            >
+            <span className="font-semibold text-text-main">{openAction.name}</span>
+            <button className="text-text-muted hover:text-text-main transition-colors text-xs cursor-pointer" onClick={closeAll}>
               ✕
             </button>
           </div>

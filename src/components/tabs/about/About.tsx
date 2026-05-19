@@ -10,20 +10,9 @@ import { personalGithubLink } from "../../../data/content";
 import { useEditorStore } from "../../../store/useEditorStore";
 import { contactTab } from "../../../data/fileSystem";
 
-type section =
-  | "About Me"
-  | "Skills"
-  | "Interests"
-  | "Experience"
-  | "Certifications";
+type section = "About Me" | "Skills" | "Interests" | "Experience" | "Certifications";
 
-const sections: section[] = [
-  "About Me",
-  "Certifications",
-  "Skills",
-  "Experience",
-  "Interests",
-];
+const sections: section[] = ["About Me", "Certifications", "Skills", "Experience", "Interests"];
 
 const generateContent = (section: section): ReactNode => {
   switch (section) {
@@ -57,9 +46,7 @@ const About = () => {
 
         <div className="w-full mt-15 flex flex-col gap-2">
           <div className="flex gap-2 justify-between w-full">
-            <h1 className="text-4xl font-bold tracking-wide">
-              Giovanni M. Leo
-            </h1>
+            <h1 className="text-4xl font-bold tracking-wide">Giovanni M. Leo</h1>
             <div className="flex items-center gap-2">
               <a href={personalGithubLink} target="_blank">
                 <Button variant="outline" className="p-2!">
@@ -67,12 +54,7 @@ const About = () => {
                 </Button>
               </a>
 
-              <Button
-                onClick={() =>
-                  window.open("/GiovanniLeo-Resume-v2.pdf", "_blank")
-                }
-                className="p-2! text-sm text-nowrap"
-              >
+              <Button onClick={() => window.open("/Leo - Resume.pdf", "_blank")} className="p-2! text-sm text-nowrap">
                 <p>View Resume</p>
               </Button>
             </div>
@@ -93,20 +75,13 @@ const About = () => {
           {sections.map((section, index) => (
             <div>
               <div className="flex items-end" key={index}>
-                <p className="text-primary text-sm font-semibold">
-                  0{index + 1}
-                </p>
+                <p className="text-primary text-sm font-semibold">0{index + 1}</p>
                 <p className="font-semibold text-xl pl-5">{section}</p>
               </div>
-              <div className="w-full pl-10 mt-5">
-                {generateContent(section)}
-              </div>
+              <div className="w-full pl-10 mt-5">{generateContent(section)}</div>
             </div>
           ))}
-          <Button
-            onClick={() => setOpenTab(contactTab)}
-            className="w-full my-5"
-          >
+          <Button onClick={() => setOpenTab(contactTab)} className="w-full my-5">
             Send a Message
           </Button>
         </div>
