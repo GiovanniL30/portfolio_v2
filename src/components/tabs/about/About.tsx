@@ -54,7 +54,10 @@ const About = () => {
                 </Button>
               </a>
 
-              <Button onClick={() => window.open("/Leo - Resume.pdf", "_blank")} className="p-2! text-sm text-nowrap">
+              <Button
+                onClick={() => window.open("https://drive.google.com/file/d/1ZEN9uGrEnLod_A6BW4yMtH6e6HgPMQbI/view?usp=sharing", "_blank")}
+                className="p-2! text-sm text-nowrap"
+              >
                 <p>View Resume</p>
               </Button>
             </div>

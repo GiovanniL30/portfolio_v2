@@ -15,7 +15,7 @@ const actionsList: ActionItem[] = [
   },
   {
     name: "View Resume",
-    handler: () => window.open("/Leo - Resume.pdf", "_blank"),
+    handler: () => window.open("https://drive.google.com/file/d/1ZEN9uGrEnLod_A6BW4yMtH6e6HgPMQbI/view?usp=sharing", "_blank"),
   },
 ];
 
